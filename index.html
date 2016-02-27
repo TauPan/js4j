@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="keywords" content="javascript, java">
+<meta name="author" content="Niko Köbler">
+<title>JavaScript for Java Developers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="css//asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css//coderay-asciidoctor.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>JavaScript for Java Developers</h1>
+<div class="details">
+<span id="author" class="author">Niko Köbler</span><br>
+<span id="email" class="email"><a href="mailto:niko@n-k.de">niko@n-k.de</a>, <a href="http://www.n-k.de" class="bare">http://www.n-k.de</a>, <a href="https://twitter.com/dasniko">@dasniko</a></span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_basics">1. Basics</a></li>
+<li><a href="#_functions">2. Functions</a></li>
+<li><a href="#_objects_prototypes_inheritence">3. Objects, Prototypes &amp; Inheritence</a></li>
+<li><a href="#_module_patterns">4. Module Patterns</a></li>
+<li><a href="#_json_json_schema">5. JSON &amp; JSON-Schema</a>
+<ul class="sectlevel2">
+<li><a href="#_javascript_object_notation">5.1. JavaScript Object Notation</a></li>
+<li><a href="#_json_schema">5.2. JSON-Schema</a></li>
+<li><a href="#_excercise">5.3. Excercise</a></li>
+</ul>
+</li>
+<li><a href="#_other_stuff">6. Other Stuff</a></li>
+<li><a href="#_ecosystem_testing_build_packaging">7. Ecosystem, Testing, Build &amp; Packaging</a></li>
+<li><a href="#_typescript">8. TypeScript</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<a class="image" href="http://javascript-training.net"><img src="images/jstraining.png" alt="javascript-training.net" width="800"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basics">1. Basics</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_functions">2. Functions</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_objects_prototypes_inheritence">3. Objects, Prototypes &amp; Inheritence</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_module_patterns">4. Module Patterns</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_json_json_schema">5. JSON &amp; JSON-Schema</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_javascript_object_notation">5.1. JavaScript Object Notation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> obj =
+{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Niko</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">gender</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">male</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">bday</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1973-12-07T02:40:00</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">height</span><span class="delimiter">&quot;</span></span>: <span class="integer">184</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">full_age</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">hobbies</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">Swim</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Bike</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Run</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> jsonString = JSON.stringify(obj);
+
+<span class="keyword">var</span> jsonObj = JSON.parse(jsonString);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_json_schema">5.2. JSON-Schema</h3>
+<div class="paragraph">
+<p><a href="http://json-schema.org/" class="bare">http://json-schema.org/</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">$schema</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://json-schema.org/draft-04/schema#</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Person</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">A Person with some attributes</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">object</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">properties</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>:   { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> },
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">gender</span><span class="delimiter">&quot;</span></span>: { <span class="key"><span class="delimiter">&quot;</span><span class="content">enum</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">male</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">female</span><span class="delimiter">&quot;</span></span>] },
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">bday</span><span class="delimiter">&quot;</span></span>:   { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>, <span class="key"><span class="delimiter">&quot;</span><span class="content">format</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">date-time</span><span class="delimiter">&quot;</span></span> },
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">height</span><span class="delimiter">&quot;</span></span>: {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Height in cm</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">integer</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">minimum</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>
+        },
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">full_age</span><span class="delimiter">&quot;</span></span>: { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">boolean</span><span class="delimiter">&quot;</span></span>, <span class="key"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span> },
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">hobbies</span><span class="delimiter">&quot;</span></span>:  {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">array</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">items</span><span class="delimiter">&quot;</span></span>: { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> },
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">uniqueItems</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span>
+        }
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">additionalAttributes</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">false</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">gender</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_excercise">5.3. Excercise</h3>
+<div class="paragraph">
+<p>Write a JSON-Schema for the object created in chapter 1!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_stuff">6. Other Stuff</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ecosystem_testing_build_packaging">7. Ecosystem, Testing, Build &amp; Packaging</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_typescript">8. TypeScript</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-02-27 19:56:58 UTC
+</div>
+</div>
+</body>
+</html>
