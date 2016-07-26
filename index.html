@@ -23,20 +23,49 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_basics">1. Basics</a></li>
-<li><a href="#_functions">2. Functions</a></li>
-<li><a href="#_objects_prototypes_inheritence">3. Objects, Prototypes &amp; Inheritence</a></li>
-<li><a href="#_module_patterns">4. Module Patterns</a></li>
-<li><a href="#_json_json_schema">5. JSON &amp; JSON-Schema</a>
+<li><a href="#_basics">1. Basics</a>
 <ul class="sectlevel2">
-<li><a href="#_javascript_object_notation">5.1. JavaScript Object Notation</a></li>
-<li><a href="#_json_schema">5.2. JSON-Schema</a></li>
-<li><a href="#_excercise">5.3. Excercise</a></li>
+<li><a href="#_runtimes">1.1. Runtimes</a></li>
+<li><a href="#_hello_world">1.2. Hello World</a></li>
+<li><a href="#_data_types">1.3. Data Types</a></li>
+<li><a href="#_variables">1.4. Variables</a></li>
+<li><a href="#_syntax">1.5. Syntax</a></li>
+<li><a href="#_comparison_and_equality_aka_vs">1.6. Comparison and Equality (aka: == vs. ===)</a></li>
+<li><a href="#_undefined_vs_null">1.7. undefined vs. null</a></li>
+<li><a href="#_flow_controls">1.8. Flow Controls</a></li>
+<li><a href="#_exceptions">1.9. Exceptions</a></li>
+<li><a href="#_exercise_1">1.10. Exercise 1</a></li>
+<li><a href="#_exercise_2">1.11. Exercise 2</a></li>
 </ul>
 </li>
-<li><a href="#_other_stuff">6. Other Stuff</a></li>
-<li><a href="#_ecosystem_testing_build_packaging">7. Ecosystem, Testing, Build &amp; Packaging</a></li>
-<li><a href="#_typescript">8. TypeScript</a></li>
+<li><a href="#_objects_prototypes_inheritence">2. Objects, Prototypes &amp; Inheritence</a>
+<ul class="sectlevel2">
+<li><a href="#_constructor">2.1. Constructor</a></li>
+<li><a href="#_prototype">2.2. Prototype</a></li>
+<li><a href="#_pseudoclassical_inheritance">2.3. Pseudoclassical Inheritance</a></li>
+<li><a href="#_prototype_chain">2.4. Prototype Chain</a></li>
+<li><a href="#_pseudoclassical_inheritance_2">2.5. Pseudoclassical Inheritance</a></li>
+<li><a href="#_object_create">2.6. Object.create()</a></li>
+<li><a href="#_exercise_1_2">2.7. Exercise 1</a></li>
+<li><a href="#_exercise_2_2">2.8. Exercise 2</a></li>
+</ul>
+</li>
+<li><a href="#_functions">3. Functions</a>
+<ul class="sectlevel2">
+<li><a href="#_first_class_citizens">3.1. First Class Citizens</a></li>
+<li><a href="#_scopes">3.2. Scopes</a></li>
+<li><a href="#_strict_mode">3.3. Strict Mode</a></li>
+<li><a href="#_parameters">3.4. Parameters</a></li>
+<li><a href="#_higher_order_functions">3.5. Higher-order Functions</a></li>
+<li><a href="#_hoisting">3.6. Hoisting</a></li>
+<li><a href="#_exercise_1_3">3.7. Exercise 1</a></li>
+<li><a href="#_exercise_2_3">3.8. Exercise 2</a></li>
+</ul>
+</li>
+<li><a href="#_module_patterns">4. Module Patterns</a></li>
+<li><a href="#_ecmascript_2015_es6_language_features">5. ECMAScript 2015 (ES6) Language Features</a></li>
+<li><a href="#_typescript">6. TypeScript</a></li>
+<li><a href="#_contact">7. Contact</a></li>
 </ul>
 </div>
 </div>
@@ -53,19 +82,1129 @@
 <div class="sect1">
 <h2 id="_basics">1. Basics</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_runtimes">1.1. Runtimes</h3>
+<div class="sect3">
+<h4 id="_browsers">1.1.1. Browsers</h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/images/browser_logo.png" alt="Browsers" width="400">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_servers">1.1.2. Servers</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Node.js</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/images/node_logo.png" alt="Node.js" width="200">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Nashorn (Java 8)</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/images/nashorn.jpg" alt="Nashorn" width="200">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>etc.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_databases">1.1.3. Databases</h4>
+<div class="paragraph">
+<p>eg. MongoDB</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/images/mongodb_logo.jpg" alt="MongoDB" width="200">
+</div>
+</div>
+<div class="paragraph">
+<p><em>and others&#8230;&#8203;</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="__things">1.1.4. "Things"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>SmartPhones</p>
+</li>
+<li>
+<p>SmartTVs</p>
+</li>
+<li>
+<p>Cars</p>
+</li>
+<li>
+<p>etc.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hello_world">1.2. Hello World</h3>
+<div class="listingblock">
+<div class="title">hello.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">console.log(<span class="string"><span class="delimiter">'</span><span class="content">Hello World!</span><span class="delimiter">'</span></span>);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Hello.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_data_types">1.3. Data Types</h3>
+<div class="sect3">
+<h4 id="_object">1.3.1. Object</h4>
+<div class="paragraph">
+<p>Java equivalent: <code>Map&lt;String, Object&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>JavaScript:</p>
+</div>
+<div class="listingblock">
+<div class="title">objects.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// create with object literal</span>
+<span class="keyword">var</span> obj = {};
 
+<span class="comment">// including properties</span>
+<span class="keyword">var</span> obj = {
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">age</span>: <span class="integer">42</span>,
+  <span class="key">male</span>: <span class="predefined-constant">true</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">twitter name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">johndoe</span><span class="delimiter">&quot;</span></span>
+};
+
+<span class="comment">// access properties</span>
+console.log(obj.name);
+<span class="comment">// -&gt; &quot;John&quot;</span>
+console.log(obj[<span class="string"><span class="delimiter">&quot;</span><span class="content">twitter name</span><span class="delimiter">&quot;</span></span>]);
+<span class="comment">// -&gt; &quot;johndoe&quot;</span>
+
+<span class="comment">// change property values</span>
+obj.name = <span class="string"><span class="delimiter">&quot;</span><span class="content">JavaScript</span><span class="delimiter">&quot;</span></span>;
+console.log(obj.name);
+<span class="comment">// -&gt; &quot;JavaScript&quot;</span>
+
+<span class="comment">// add properties</span>
+obj.skype = <span class="string"><span class="delimiter">&quot;</span><span class="content">jdoe</span><span class="delimiter">&quot;</span></span>;
+console.log(obj.skype);
+<span class="comment">// -&gt; &quot;nkoebler&quot;</span>
+
+obj.<span class="function">func</span> = <span class="keyword">function</span>() {
+  <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">function call</span><span class="delimiter">&quot;</span></span>;
+};
+
+<span class="comment">// change type of property</span>
+obj.age: <span class="string"><span class="delimiter">&quot;</span><span class="content">too old</span><span class="delimiter">&quot;</span></span>;
+console.log(obj.age);
+<span class="comment">// -&gt; &quot;too old&quot;</span>
+
+<span class="comment">// delete properties</span>
+<span class="keyword">delete</span> obj.male;
+console.log(obj.male);
+<span class="comment">// -&gt; undefined</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_array">1.3.2. Array</h4>
+<div class="listingblock">
+<div class="title">arrays.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> array = [<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">c</span><span class="delimiter">&quot;</span></span>];
+
+console.log(<span class="keyword">typeof</span> array);
+<span class="comment">// -&gt; &quot;object&quot;</span>
+
+<span class="keyword">var</span> e = array[<span class="integer">2</span>];
+<span class="comment">// -&gt; &quot;c&quot;</span>
+
+array[<span class="integer">0</span>] = <span class="integer">0</span>;
+<span class="comment">// -&gt; [0, &quot;b&quot;, &quot;c&quot;]</span>
+
+array.push(<span class="string"><span class="delimiter">&quot;</span><span class="content">z</span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// -&gt; [0, &quot;b&quot;, &quot;c&quot;, &quot;z&quot;]</span>
+
+array.splice(<span class="integer">1</span>, <span class="integer">2</span>);
+<span class="comment">// -&gt; [0, &quot;z&quot;];</span>
+
+array.splice(<span class="integer">1</span>, <span class="integer">0</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">y</span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// -&gt; [0, &quot;y&quot;, &quot;z&quot;];</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_string">1.3.3. String</h4>
+<div class="listingblock">
+<div class="title">strings.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> str1 = <span class="string"><span class="delimiter">&quot;</span><span class="content">a string</span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">var</span> str2 = <span class="string"><span class="delimiter">'</span><span class="content">also possible with single quotes</span><span class="delimiter">'</span></span>;
+
+<span class="keyword">var</span> str = <span class="string"><span class="delimiter">&quot;</span><span class="content">JavaScript</span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">var</span> c1 = str[<span class="integer">4</span>];
+<span class="comment">// -&gt; &quot;S&quot;</span>
+<span class="comment">// typeof -&gt; &quot;string&quot;</span>
+
+<span class="keyword">var</span> c2 = str.charAt(<span class="integer">4</span>);
+<span class="comment">// -&gt; &quot;S&quot;</span>
+
+<span class="keyword">var</span> fname = <span class="string"><span class="delimiter">&quot;</span><span class="content">John </span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">var</span> lname = <span class="string"><span class="delimiter">&quot;</span><span class="content">Doe</span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">var</span> name = fname + lname;
+<span class="comment">// -&gt; &quot;John Doe&quot;</span>
+
+<span class="comment">// via Array (kind of StringBuilder in Java)</span>
+<span class="keyword">var</span> strings = [<span class="string"><span class="delimiter">&quot;</span><span class="content">JavaScript</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">is</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cool</span><span class="delimiter">&quot;</span></span>];
+builder.join(<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// -&gt; &quot;JavaScript is cool&quot;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_number">1.3.4. Number</h4>
+<div class="listingblock">
+<div class="title">numbers.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> <span class="reserved">int</span> = <span class="integer">1</span>;
+<span class="comment">// -&gt; number</span>
+<span class="keyword">var</span> <span class="reserved">float</span> = <span class="float">1.0</span>;
+<span class="comment">// -&gt; number</span>
+
+<span class="keyword">var</span> i = parseInt(<span class="string"><span class="delimiter">&quot;</span><span class="content">100.1</span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// -&gt; 100</span>
+
+<span class="keyword">var</span> f = parseFloat(<span class="string"><span class="delimiter">&quot;</span><span class="content">100.1</span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// -&gt; 100.1</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">guess.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> a = <span class="integer">1</span> / <span class="integer">0</span>;
+<span class="comment">// result / type? </span><i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="keyword">var</span> b = <span class="integer">0</span> / <span class="integer">0</span>;
+<span class="comment">// result? / type? </span><i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="keyword">var</span> c = <span class="integer">0</span> / <span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>;
+<span class="comment">// result? / type? </span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>Infinity / number</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>NaN / number</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>NaN / number</code></td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_boolean">1.3.5. Boolean</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// true / false</span>
+
+<span class="keyword">var</span> bool = <span class="predefined-constant">true</span>;
+<span class="comment">// typeof -&gt; &quot;boolean&quot;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_variables">1.4. Variables</h3>
+<div class="listingblock">
+<div class="title">variables-initialization.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> a = <span class="integer">1</span>;
+
+<span class="keyword">var</span> b = <span class="integer">2</span>, c;
+<span class="comment">// -&gt; b = 2</span>
+<span class="comment">// -&gt; c = undefined</span>
+
+<span class="keyword">var</span> obj = {<span class="key">a</span>: <span class="integer">1</span>, <span class="key">b</span>: <span class="integer">2</span>};
+
+<span class="keyword">var</span> arr = [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>];</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">variables-change-type.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> x;
+x = <span class="integer">1</span>;
+<span class="comment">// -&gt; number</span>
+x = <span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>;
+<span class="comment">// -&gt; string</span>
+x = <span class="predefined-constant">true</span>;
+<span class="comment">// -&gt; boolean</span>
+x = {};
+<span class="comment">// -&gt; object</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_syntax">1.5. Syntax</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">;
+
+<span class="comment">// a comment</span>
+
+<span class="comment">/*
+a block comment
+*/</span>
+
+<span class="comment">/**
+ * a comment for documentation
+ */</span>
+
+{
+  <span class="comment">// a block</span>
+  <span class="comment">// but a block is not (yet) scoped!</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_comparison_and_equality_aka_vs">1.6. Comparison and Equality (aka: == vs. ===)</h3>
+<div class="paragraph">
+<p>Equals Operator (==) vs. Strict Equals Operator (===)</p>
+</div>
+<div class="paragraph">
+<p>All true:</p>
+</div>
+<div class="listingblock">
+<div class="title">equals.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">&quot;</span><span class="content">cat</span><span class="delimiter">&quot;</span></span> == <span class="string"><span class="delimiter">&quot;</span><span class="content">cat</span><span class="delimiter">&quot;</span></span>;
+<span class="integer">1</span> == <span class="predefined-constant">true</span>;
+<span class="integer">2</span> != <span class="predefined-constant">false</span>;
+<span class="integer">2</span> != <span class="predefined-constant">true</span>;
+<span class="integer">0</span> == <span class="predefined-constant">false</span>;
+-<span class="integer">1</span> != <span class="predefined-constant">false</span>;
+-<span class="integer">1</span> != <span class="predefined-constant">true</span>;
+<span class="integer">1</span> == <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>
+<span class="integer">1</span> == <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">strict-equals.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">&quot;</span><span class="content">cat</span><span class="delimiter">&quot;</span></span> === <span class="string"><span class="delimiter">&quot;</span><span class="content">cat</span><span class="delimiter">&quot;</span></span>;
+<span class="integer">1</span> !== <span class="predefined-constant">true</span>;
+<span class="integer">1</span> !== <span class="predefined-constant">false</span>;
+<span class="integer">1</span> === <span class="integer">1</span>;
+<span class="integer">1</span> !== <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>;
+-<span class="integer">0</span> === +<span class="integer">0</span>;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">object-comparison.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> obj1 = {};      obj1 === obj1;
+<span class="keyword">var</span> obj2 = {};      obj1 !== obj2;
+<span class="keyword">var</span> obj3 = obj1;    obj1 === obj3;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_undefined_vs_null">1.7. undefined vs. null</h3>
+<div class="listingblock">
+<div class="title">undefined-is-not-null.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined-constant">undefined</span> == <span class="predefined-constant">null</span>
+<span class="comment">// true</span>
+<span class="predefined-constant">undefined</span> === <span class="predefined-constant">null</span>
+<span class="comment">// false</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">types.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> a;
+<span class="comment">// typeof -&gt; undefined</span>
+
+<span class="keyword">var</span> b = <span class="predefined-constant">null</span>;
+<span class="comment">// typeof -&gt; &quot;object&quot;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_flow_controls">1.8. Flow Controls</h3>
+<div class="paragraph">
+<p>Like we know from Java:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>if</code></p>
+</li>
+<li>
+<p><code>switch</code></p>
+</li>
+<li>
+<p><code>? :</code> <em>(ternary operator)</em></p>
+</li>
+<li>
+<p><code>for</code></p>
+</li>
+<li>
+<p><code>while / do&#8230;&#8203;while</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some more:</p>
+</div>
+<div class="paragraph">
+<p><code>for&#8230;&#8203;in</code></p>
+</div>
+<div class="listingblock">
+<div class="title">for-in.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> numbers = [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>];
+<span class="keyword">var</span> sum = <span class="integer">0</span>;
+<span class="keyword">for</span> (<span class="keyword">var</span> n <span class="keyword">in</span> numbers) {
+  sum += n;
+}
+console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Sum: </span><span class="delimiter">&quot;</span></span> + sum);
+<span class="comment">// result?</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">for-in-correct.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> numbers = [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>];
+<span class="keyword">var</span> sum = <span class="integer">0</span>;
+<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> numbers) {
+  sum += numbers[i];
+}
+console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Sum: </span><span class="delimiter">&quot;</span></span> + sum);
+<span class="comment">// -&gt; 15</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">foreach.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> numbers = [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>];
+<span class="keyword">var</span> sum = <span class="integer">0</span>;
+numbers.forEach(<span class="keyword">function</span>(n) {
+  sum += n;
+});
+console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Sum: </span><span class="delimiter">&quot;</span></span> + sum);
+<span class="comment">// -&gt; 15</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exceptions">1.9. Exceptions</h3>
+<div class="listingblock">
+<div class="title">exceptions.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">try</span> {
+  <span class="keyword">throw</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Error</span><span class="delimiter">&quot;</span></span>; <span class="comment">// throw what you want!</span>
+  <span class="comment">// or</span>
+  <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Error</span><span class="delimiter">&quot;</span></span>); <span class="comment">// kind of RuntimeException</span>
+} <span class="keyword">catch</span> (e) {
+  <span class="comment">// only one catch block!</span>
+  console.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Caught: </span><span class="delimiter">&quot;</span></span> + e);
+} <span class="keyword">finally</span> {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">finally processed</span><span class="delimiter">&quot;</span></span>);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercise_1">1.10. Exercise 1</h3>
+<div class="paragraph">
+<p>Create an object with attributes answering the following questions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What&#8217;s your name?</p>
+</li>
+<li>
+<p>When is your birthday?</p>
+</li>
+<li>
+<p>How tall are you?</p>
+</li>
+<li>
+<p>Are you female?</p>
+</li>
+<li>
+<p>What are your hobbies?</p>
+</li>
+<li>
+<p>What&#8217;s your address?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercise_2">1.11. Exercise 2</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Create at least 3 objects with at least 3 attributes.</p>
+</li>
+<li>
+<p>Iterate over an array of these three objects, with both for-options.</p>
+</li>
+<li>
+<p>Concatenate the attributes to a string and print it to the console.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_functions">2. Functions</h2>
+<h2 id="_objects_prototypes_inheritence">2. Objects, Prototypes &amp; Inheritence</h2>
 <div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Every object is linked to a prototype object from which it can inherit properties.
+All objects created from object literals are linked to <code>Object.prototype</code>, an object that comes standard with JavaScript.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>If we try to retrieve a property value from an object, and if the object lacks the property name, then JavaScript attempts to retrieve the property value from the prototype object.
+And if that object is lacking the property, then it goes to <em>its</em> prototype, and so on until the process finally bottoms out with <code>Object.prototype</code>.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Douglas Crockford<br>
+<cite>JavaScript: The Good Parts - pp. 22</cite>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">object-types.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> obj = {};
 
+console.log(obj.toString());
+<span class="comment">// -&gt; [object Object]</span>
+
+console.log(obj <span class="keyword">instanceof</span> Object);
+<span class="comment">// -&gt; true</span>
+console.log(<span class="keyword">typeof</span> Object);
+<span class="comment">// -&gt; &quot;function&quot;</span>
+
+console.log(<span class="keyword">typeof</span> Object.prototype);
+<span class="comment">// -&gt; &quot;object&quot;</span>
+
+console.log(<span class="keyword">typeof</span> Object.prototype.toString);
+<span class="comment">// -&gt; &quot;function&quot;</span></code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_constructor">2.1. Constructor</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// create a new person</span>
+<span class="keyword">function</span> <span class="function">Person</span>(name) {
+  <span class="local-variable">this</span>.name = name;
+}
+
+<span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+console.log(john.name);
+<span class="comment">// -&gt; &quot;John&quot;</span>
+console.log(john.toString());
+<span class="comment">// -&gt; [object Object]</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>starts with Uppercase character</p>
+</li>
+<li>
+<p>no explicit return statement</p>
+</li>
+<li>
+<p>this references a newly created object</p>
+</li>
+<li>
+<p>called with new operator</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+like in Java&#8230;&#8203;
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_prototype">2.2. Prototype</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// create a new person</span>
+<span class="keyword">function</span> <span class="function">Person</span>(name) {
+  <span class="local-variable">this</span>.name = name;
+}
+
+<span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+console.log(john.name);
+<span class="comment">// -&gt; &quot;John&quot;</span>
+console.log(john.toString());
+<span class="comment">// -&gt; [object Object]</span>
+console.log(john.prototype);
+<span class="comment">// -&gt; undefined</span>
+console.log(Object.getPrototypeOf(john));
+<span class="comment">// -&gt; Person {}</span>
+
+Person.prototype.<span class="function">getName</span> = <span class="keyword">function</span>() {
+  <span class="keyword">return</span> <span class="local-variable">this</span>.name;
+};
+
+<span class="keyword">var</span> name = john.getName();
+console.log(name);
+<span class="comment">// -&gt; &quot;John&quot;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pseudoclassical_inheritance">2.3. Pseudoclassical Inheritance</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">Person</span>(name) {
+  <span class="local-variable">this</span>.name = name;
+}
+Person.prototype.<span class="function">getName</span> = <span class="keyword">function</span>() {
+  <span class="keyword">return</span> <span class="local-variable">this</span>.name;
+};
+<span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+
+Object.getPrototypeOf(john) === Person.prototype;
+console.log(john <span class="keyword">instanceof</span> Person);
+<span class="comment">// -&gt; true</span>
+<span class="comment">// because:</span>
+Object.getPrototypeOf(john) === Person.prototype;
+
+console.log(john <span class="keyword">instanceof</span> Object);
+<span class="comment">// -&gt; true</span>
+<span class="comment">// because:</span>
+Object.getPrototypeOf(Person.prototype) === Object.prototype;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_prototype_chain">2.4. Prototype Chain</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/images/prototype_chain.png" alt="prototype chain" width="400">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pseudoclassical_inheritance_2">2.5. Pseudoclassical Inheritance</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// creates a person</span>
+<span class="keyword">function</span> <span class="function">Person</span>(name, gender) {
+  <span class="local-variable">this</span>.name = name;
+  <span class="local-variable">this</span>.gender = gender;
+}
+<span class="comment">// creates a male person</span>
+<span class="keyword">function</span> <span class="function">Male</span>(name) {
+  <span class="comment">// call the superconstructor</span>
+  Person.call(<span class="local-variable">this</span>, name, <span class="string"><span class="delimiter">&quot;</span><span class="content">male</span><span class="delimiter">&quot;</span></span>);
+}
+<span class="comment">// returns the name of a male person</span>
+Male.prototype.<span class="function">getName</span> = <span class="keyword">function</span>() {
+  <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Mr. </span><span class="delimiter">&quot;</span></span> + Person.prototype
+                      .getName.call(<span class="local-variable">this</span>);
+};
+<span class="keyword">var</span> john = <span class="keyword">new</span> Male(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+john.getName(); <span class="comment">// &quot;Mr. John&quot;</span>
+john.gender; <span class="comment">// &quot;male&quot;</span>
+
+john <span class="keyword">instanceof</span> Male;   <span class="comment">// true</span>
+john <span class="keyword">instanceof</span> Person; <span class="comment">// true</span>
+john <span class="keyword">instanceof</span> Object; <span class="comment">// true</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">Male.prototype <span class="keyword">instanceof</span> Person;
+<span class="comment">// -&gt; false</span>
+_extends(Male, Person);
+Male.prototype = <span class="keyword">new</span> Person();
+
+<span class="keyword">function</span> <span class="function">_extendsSimple</span>(_sub, _super) {
+  _sub.prototype = <span class="keyword">new</span> _super();
+}
+
+console.log(Male.prototype);
+<span class="comment">// -&gt; Person {name: undefined, gender: undefined}</span>
+<span class="keyword">function</span> <span class="function">_extends</span>(_sub, _super) {
+  <span class="keyword">var</span> <span class="function">__</span> = <span class="keyword">function</span>() {};
+  __.prototype = _super.prototype;
+
+  _sub.prototype = <span class="keyword">new</span> __();
+
+  _sub.prototype.constructor = _sub;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_object_create">2.6. Object.create()</h3>
+<div class="listingblock">
+<div class="title">object-create.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> anotherObject = Object.create(anObject);
+
+Object.<span class="function">create</span> = <span class="keyword">function</span>(o) {
+  <span class="keyword">var</span> <span class="function">F</span> = <span class="keyword">function</span>() {};
+  F.prototype = o;
+  <span class="keyword">return</span> <span class="keyword">new</span> F();
+};
+
+<span class="keyword">function</span> <span class="function">_extends</span>(_sub, _super) {
+  _sub.prototype = Object.create(_super.prototype);
+  _sub.prototype.constructor = _sub;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercise_1_2">2.7. Exercise 1</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Write a <code>Person</code> "class"</p>
+</li>
+<li>
+<p>Allow constructor with <em>name, age &amp; gender</em></p>
+</li>
+<li>
+<p>Create methods of all functions which operate on Person</p>
+</li>
+<li>
+<p>Create an object of type Person and call methods</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercise_2_2">2.8. Exercise 2</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a type <code>Customer</code> which extends <code>Person</code>.</p>
+</li>
+<li>
+<p>Calculate an additional field from the input parameters which indicates the favourite shopping item.</p>
+</li>
+<li>
+<p>Call from the Customer-constructor the Person-constructor.</p>
+</li>
+<li>
+<p>Overwrite the <code>getName</code> method.</p>
+</li>
+<li>
+<p>Add a <code>shop</code> method which returns the favourite item.</p>
+</li>
+<li>
+<p>Create at least one Customer object and call methods on it.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_objects_prototypes_inheritence">3. Objects, Prototypes &amp; Inheritence</h2>
+<h2 id="_functions">3. Functions</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_first_class_citizens">3.1. First Class Citizens</h3>
+<div class="listingblock">
+<div class="title">first.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">myFirstFunction</span>() {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">this is great!</span><span class="delimiter">&quot;</span></span>);
+}
 
+<span class="comment">// call</span>
+myFirstFunction();
+<span class="comment">// -&gt; this is great!</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">second.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> <span class="function">secondFunction</span> = <span class="keyword">function</span>() {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">this is also great!</span><span class="delimiter">&quot;</span></span>);
+};
+
+<span class="comment">// call</span>
+secondFunction();
+<span class="comment">// -&gt; this is also great!</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scopes">3.2. Scopes</h3>
+<div class="listingblock">
+<div class="title">no-scope.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// no scoping!</span>
+{
+  <span class="keyword">var</span> a = <span class="integer">1</span>;
+}
+console.log(a);
+<span class="comment">// -&gt; 1</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">scope.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">(<span class="keyword">function</span>() {
+  <span class="keyword">var</span> b = <span class="integer">10</span>;
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hey, it's me: </span><span class="delimiter">&quot;</span></span> + b);
+})();
+
+console.log(<span class="keyword">typeof</span> b);
+<span class="comment">// -&gt; undefined</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>IIFE</strong> - <em>Immediately-Invoked Function Expression</em></p>
+</div>
+<div class="paragraph">
+<p><span class="small">(ES6/ES2015 brings Block-scoped variables!)</span></p>
+</div>
+<div class="listingblock">
+<div class="title">closure.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">(<span class="keyword">function</span>() {
+    <span class="keyword">var</span> a = <span class="integer">1</span>;
+    console.log(a);
+    <span class="comment">// -&gt; 1</span>
+    (<span class="keyword">function</span>() {
+        <span class="keyword">var</span> b = <span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>;
+        console.log(b);
+        <span class="comment">// -&gt; &quot;b&quot;</span>
+        console.log(a);
+        <span class="comment">// -&gt; 1</span>
+    })();
+    console.log(<span class="keyword">typeof</span> b);
+    <span class="comment">// -&gt; undefined</span>
+})();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_strict_mode">3.3. Strict Mode</h3>
+<div class="listingblock">
+<div class="title">strict.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">&quot;</span><span class="content">use strict</span><span class="delimiter">&quot;</span></span>;
+<span class="comment">// ...your code goes here...</span>
+
+<span class="keyword">function</span> <span class="function">strictFunction</span>() {
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">use strict</span><span class="delimiter">&quot;</span></span>;
+  <span class="comment">// ...function code...</span>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">global-scope.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">foo</span>() {
+  bar = <span class="integer">1</span>;
+  console.log(bar);
+}
+foo();
+<span class="comment">// -&gt; 1</span>
+console.log(bar);
+<span class="comment">// -&gt; 1</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">local-scope.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">foo</span>() {
+  <span class="keyword">var</span> bar = <span class="integer">1</span>;
+  console.log(bar);
+}
+foo();
+<span class="comment">// -&gt; 1</span>
+console.log(bar);
+<span class="comment">// -&gt; Uncaught ReferenceError: bar is not defined</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">strict.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">&quot;</span><span class="content">use strict</span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">function</span> <span class="function">foo</span>() {
+  bar = <span class="integer">1</span>;
+  <span class="comment">// -&gt; Uncaught ReferenceError: bar is not defined</span>
+  console.log(bar);
+}
+foo();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_parameters">3.4. Parameters</h3>
+<div class="listingblock">
+<div class="title">unknown.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">incr</span>(num) {
+  <span class="keyword">return</span> num + <span class="integer">1</span>;
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">with-jsdoc.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">/**
+ * Increases the input by 1.
+ *
+ * @param {number} num the input
+ * @returns {number} the by 1 increased input
+ */</span>
+<span class="keyword">function</span> <span class="function">incr</span>(num) {
+  <span class="keyword">return</span> num + <span class="integer">1</span>;
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">optional-params.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// optional parameters</span>
+<span class="keyword">function</span> <span class="function">next</span>(num) {
+  <span class="keyword">return</span> ((<span class="keyword">typeof</span> num !== <span class="string"><span class="delimiter">&quot;</span><span class="content">undefined</span><span class="delimiter">&quot;</span></span>) ? num : <span class="integer">0</span>) + <span class="integer">1</span>
+}
+console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Next without parameter: </span><span class="delimiter">&quot;</span></span> + next());
+<span class="comment">// -&gt; &quot;Next without parameter: 1</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">variable-param-count.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// variable parameter count</span>
+<span class="keyword">function</span> <span class="function">sum</span>() {
+  <span class="keyword">var</span> sum = <span class="integer">0</span>;
+  <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> <span class="local-variable">arguments</span>) {
+    sum += <span class="local-variable">arguments</span>[i];
+  }
+  <span class="keyword">return</span> sum;
+}
+
+console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Sum: </span><span class="delimiter">&quot;</span></span> + sum(<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>));
+<span class="comment">// -&gt; 15</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">variable-param-count-with-jsdoc.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">/**
+ * @param {...number} summands
+ * @return {number} the sum
+ */</span>
+<span class="keyword">function</span> <span class="function">sum</span>(summands) {
+  <span class="keyword">var</span> sum = <span class="integer">0</span>;
+  <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> <span class="local-variable">arguments</span>) {
+    sum += <span class="local-variable">arguments</span>[i];
+  }
+  <span class="keyword">return</span> sum;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_higher_order_functions">3.5. Higher-order Functions</h3>
+<div class="listingblock">
+<div class="title">higher-order.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> numbers = [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>];
+numbers.forEach(<span class="keyword">function</span>(n) {
+  console.log(n);
+});</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Callback-Functions are higher-order functions and derived from the functional programming paradigm.<br>
+Callback Functions are Closures!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>on Arrays (map/reduce/filter):</p>
+</div>
+<div class="listingblock">
+<div class="title">higer-order-array-filter.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> numbers = [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>];
+numbers.filter(<span class="keyword">function</span>(n) {
+  <span class="keyword">return</span> n % <span class="integer">2</span> === <span class="integer">0</span>;
+}).forEach(<span class="keyword">function</span>(n) {
+  console.log(n);
+});
+<span class="comment">// -&gt; 2</span>
+<span class="comment">// -&gt; 4</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">higer-order-array-mapreduce.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> numbers = [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>];
+<span class="keyword">var</span> sum = numbers.map(<span class="keyword">function</span>(n) {
+  <span class="keyword">return</span> n * n;
+}).reduce(<span class="keyword">function</span>(reduced, element) {
+  <span class="keyword">return</span> reduced + element;
+});
+console.log(sum);
+<span class="comment">// -&gt; 55</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hoisting">3.6. Hoisting</h3>
+<div class="paragraph">
+<p>Try this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">(<span class="keyword">function</span>() {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">before: </span><span class="delimiter">&quot;</span></span> + hoisted);
+  <span class="keyword">var</span> hoisted = <span class="integer">1</span>;
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">after: </span><span class="delimiter">&quot;</span></span> + hoisted);
+})();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The better way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">(<span class="keyword">function</span>() {
+  <span class="keyword">var</span> hoisted;
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">before: </span><span class="delimiter">&quot;</span></span> + hoisted);
+  hoisted = <span class="integer">1</span>;
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">after: </span><span class="delimiter">&quot;</span></span> + hoisted);
+})();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Function hoisting:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">(<span class="keyword">function</span>() {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">inner1: </span><span class="delimiter">&quot;</span></span> + inner1);
+  <span class="comment">// -&gt; function inner1() {...}</span>
+  inner1();
+  <span class="comment">// -&gt; Inner1</span>
+
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">inner2: </span><span class="delimiter">&quot;</span></span> + inner2);
+  <span class="comment">// -&gt; undefined</span>
+
+  <span class="keyword">function</span> <span class="function">inner1</span>() {
+    console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Inner1</span><span class="delimiter">&quot;</span></span>);
+  }
+
+  <span class="keyword">var</span> <span class="function">inner2</span> = <span class="keyword">function</span>() {
+    console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Inner2</span><span class="delimiter">&quot;</span></span>);
+  }
+})();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercise_1_3">3.7. Exercise 1</h3>
+<div class="paragraph">
+<p>What is the expected result, the real result and why does this won&#8217;t work as expected?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="integer">0</span>; i &lt; <span class="integer">10</span>; i++) {
+    setTimeout(<span class="keyword">function</span>() {console.log(i)}, <span class="integer">1</span>);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercise_2_3">3.8. Exercise 2</h3>
+<div class="paragraph">
+<p>Re-write the previous function to a working version!</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -75,95 +1214,38 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_json_json_schema">5. JSON &amp; JSON-Schema</h2>
+<h2 id="_ecmascript_2015_es6_language_features">5. ECMAScript 2015 (ES6) Language Features</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_javascript_object_notation">5.1. JavaScript Object Notation</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> obj =
-{
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Niko</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">gender</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">male</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">bday</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1973-12-07T02:40:00</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">height</span><span class="delimiter">&quot;</span></span>: <span class="integer">184</span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">full_age</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">hobbies</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">Swim</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Bike</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Run</span><span class="delimiter">&quot;</span></span>]
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> jsonString = JSON.stringify(obj);
 
-<span class="keyword">var</span> jsonObj = JSON.parse(jsonString);</code></pre>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_typescript">6. TypeScript</h2>
+<div class="sectionbody">
+
 </div>
-<div class="sect2">
-<h3 id="_json_schema">5.2. JSON-Schema</h3>
+</div>
+<div class="sect1">
+<h2 id="_contact">7. Contact</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p><a href="http://json-schema.org/" class="bare">http://json-schema.org/</a></p>
+<p>Niko Köbler IT-Beratung</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">{
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">$schema</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://json-schema.org/draft-04/schema#</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Person</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">A Person with some attributes</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">object</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">properties</span><span class="delimiter">&quot;</span></span>: {
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>:   { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> },
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">gender</span><span class="delimiter">&quot;</span></span>: { <span class="key"><span class="delimiter">&quot;</span><span class="content">enum</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">male</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">female</span><span class="delimiter">&quot;</span></span>] },
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">bday</span><span class="delimiter">&quot;</span></span>:   { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>, <span class="key"><span class="delimiter">&quot;</span><span class="content">format</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">date-time</span><span class="delimiter">&quot;</span></span> },
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">height</span><span class="delimiter">&quot;</span></span>: {
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Height in cm</span><span class="delimiter">&quot;</span></span>,
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">integer</span><span class="delimiter">&quot;</span></span>,
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">minimum</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>
-        },
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">full_age</span><span class="delimiter">&quot;</span></span>: { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">boolean</span><span class="delimiter">&quot;</span></span>, <span class="key"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span> },
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">hobbies</span><span class="delimiter">&quot;</span></span>:  {
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">array</span><span class="delimiter">&quot;</span></span>,
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">items</span><span class="delimiter">&quot;</span></span>: { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> },
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">uniqueItems</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span>
-        }
-    },
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">additionalAttributes</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">false</span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">gender</span><span class="delimiter">&quot;</span></span>]
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_excercise">5.3. Excercise</h3>
 <div class="paragraph">
-<p>Write a JSON-Schema for the object created in chapter 1!</p>
+<p>E-Mail: <a href="mailto:info@n-k.de">info@n-k.de</a></p>
 </div>
+<div class="paragraph">
+<p>Web: <a href="http://www.n-k.de" class="bare">http://www.n-k.de</a></p>
 </div>
+<div class="paragraph">
+<p>Twitter: <a href="https://twitter.com/dasniko">@dasniko</a></p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_other_stuff">6. Other Stuff</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_ecosystem_testing_build_packaging">7. Ecosystem, Testing, Build &amp; Packaging</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_typescript">8. TypeScript</h2>
-<div class="sectionbody">
-
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-27 19:56:58 UTC
+Last updated 2016-07-26 19:10:37 UTC
 </div>
 </div>
 </body>
