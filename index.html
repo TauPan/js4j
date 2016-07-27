@@ -62,10 +62,62 @@
 <li><a href="#_exercise_2_3">3.8. Exercise 2</a></li>
 </ul>
 </li>
-<li><a href="#_module_patterns">4. Module Patterns</a></li>
-<li><a href="#_ecmascript_2015_es6_language_features">5. ECMAScript 2015 (ES6) Language Features</a></li>
-<li><a href="#_typescript">6. TypeScript</a></li>
-<li><a href="#_contact">7. Contact</a></li>
+<li><a href="#_module_patterns">4. Module Patterns</a>
+<ul class="sectlevel2">
+<li><a href="#_modules_with_closures">4.1. Modules with Closures</a></li>
+<li><a href="#_closures">4.2. Closures</a></li>
+<li><a href="#_revealing_module_pattern">4.3. Revealing Module Pattern</a></li>
+<li><a href="#_namespaces">4.4. Namespaces</a></li>
+<li><a href="#_import">4.5. Import</a></li>
+<li><a href="#_amd">4.6. AMD</a></li>
+<li><a href="#_commonjs">4.7. CommonJS</a></li>
+</ul>
+</li>
+<li><a href="#_other_stuff">5. Other Stuff</a>
+<ul class="sectlevel2">
+<li><a href="#_this">5.1. this</a></li>
+<li><a href="#_statics">5.2. Statics</a></li>
+<li><a href="#_enumerations">5.3. Enumerations</a></li>
+<li><a href="#_overloading">5.4. Overloading</a></li>
+<li><a href="#_regular_expressions">5.5. Regular Expressions</a></li>
+</ul>
+</li>
+<li><a href="#_ecmascript_2015_es6_language_features">6. ECMAScript 2015 (ES6) Language Features</a>
+<ul class="sectlevel2">
+<li><a href="#_classes_inheritance">6.1. Classes &amp; Inheritance</a></li>
+<li><a href="#_arrow_functions">6.2. Arrow Functions</a></li>
+<li><a href="#_scopes_2">6.3. Scopes</a></li>
+<li><a href="#_template_strings">6.4. Template Strings</a></li>
+<li><a href="#_destructuring">6.5. Destructuring</a></li>
+<li><a href="#_static_elements">6.6. Static Elements</a></li>
+<li><a href="#_extended_object_literals">6.7. Extended Object Literals</a></li>
+<li><a href="#_default_and_rest_parameter">6.8. Default- and Rest-Parameter</a></li>
+<li><a href="#_spread_operator">6.9. Spread Operator</a></li>
+<li><a href="#_object_assign_and_spraed_operator_es8">6.10. Object.assign() and Spraed Operator (ES8)</a></li>
+<li><a href="#_modules_exports_and_imports">6.11. Modules, Exports and Imports</a></li>
+<li><a href="#_promises">6.12. Promises</a></li>
+</ul>
+</li>
+<li><a href="#_testing">7. Testing</a>
+<ul class="sectlevel2">
+<li><a href="#_mocha">7.1. Mocha</a></li>
+<li><a href="#_jasmine">7.2. Jasmine</a></li>
+<li><a href="#_karma">7.3. Karma</a></li>
+<li><a href="#_unitjs">7.4. UnitJS</a></li>
+<li><a href="#_assertion_libraries">7.5. Assertion Libraries</a></li>
+</ul>
+</li>
+<li><a href="#_ecosystem_build_packaging">8. Ecosystem, Build &amp; Packaging</a>
+<ul class="sectlevel2">
+<li><a href="#_code_checker_linter">8.1. Code Checker / Linter</a></li>
+<li><a href="#_code_documentation">8.2. Code Documentation</a></li>
+<li><a href="#_minifying_uglifying">8.3. Minifying &amp; Uglifying</a></li>
+<li><a href="#_package_manager">8.4. Package Manager</a></li>
+<li><a href="#_task_runner">8.5. Task Runner</a></li>
+</ul>
+</li>
+<li><a href="#_typescript">9. TypeScript</a></li>
+<li><a href="#_contact">10. Contact</a></li>
 </ul>
 </div>
 </div>
@@ -88,7 +140,7 @@
 <h4 id="_browsers">1.1.1. Browsers</h4>
 <div class="imageblock">
 <div class="content">
-<img src="images/images/browser_logo.png" alt="Browsers" width="400">
+<img src="images/browser_logo.png" alt="Browsers" width="400">
 </div>
 </div>
 </div>
@@ -103,7 +155,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/images/node_logo.png" alt="Node.js" width="200">
+<img src="images/node_logo.png" alt="Node.js" width="200">
 </div>
 </div>
 <div class="ulist">
@@ -115,7 +167,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/images/nashorn.jpg" alt="Nashorn" width="200">
+<img src="images/nashorn.jpg" alt="Nashorn" width="200">
 </div>
 </div>
 <div class="ulist">
@@ -133,7 +185,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/images/mongodb_logo.jpg" alt="MongoDB" width="200">
+<img src="images/mongodb_logo.jpg" alt="MongoDB" width="200">
 </div>
 </div>
 <div class="paragraph">
@@ -756,7 +808,7 @@ Object.getPrototypeOf(Person.prototype) === Object.prototype;</code></pre>
 <h3 id="_prototype_chain">2.4. Prototype Chain</h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/images/prototype_chain.png" alt="prototype chain" width="400">
+<img src="images/prototype_chain.png" alt="prototype chain" width="400">
 </div>
 </div>
 </div>
@@ -1210,23 +1262,769 @@ console.log(sum);
 <div class="sect1">
 <h2 id="_module_patterns">4. Module Patterns</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_modules_with_closures">4.1. Modules with Closures</h3>
+<div class="listingblock">
+<div class="title">not-defined.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">(<span class="keyword">function</span>() {
+  <span class="keyword">var</span> Config = {
+    <span class="key">a</span>: <span class="integer">1</span>,
+    <span class="key">b</span>: <span class="integer">2</span>
+  };
+})();
 
+<span class="comment">// ReferenceError: Config is not defined</span>
+Config.a;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">module-defined.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> module = {};
+(<span class="keyword">function</span>() {
+  <span class="keyword">var</span> Config = { <span class="key">a</span>: <span class="integer">1</span>, <span class="key">b</span>: <span class="integer">2</span> };
+  <span class="comment">// export the object</span>
+  module.Config = Config;
+})();
+
+console.log(module.Config.a);
+<span class="comment">// -&gt; 1</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">person-module.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> person = {};
+(<span class="keyword">function</span>() {
+  <span class="comment">// Constructor</span>
+  <span class="keyword">function</span> <span class="function">Person</span>(name) {
+    <span class="local-variable">this</span>.name = name;
+  }
+  <span class="comment">// Factory</span>
+  <span class="keyword">function</span> <span class="function">CreatePerson</span>(name) {
+    <span class="keyword">return</span> <span class="keyword">new</span> Person(name);
+  }
+  <span class="comment">// export of the factory method</span>
+  person.CreatePerson = CreatePerson;
+})();
+
+console.log(person.Person);
+<span class="comment">// -&gt; undefined</span>
+
+<span class="keyword">var</span> john = person.CreatePerson(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+console.log(john.name);
+<span class="comment">// -&gt; &quot;John&quot;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_closures">4.2. Closures</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+An inner function always has access to the vars and parameters of its outer function, even after the outer function has returned. <span class="small">(Douglas Crockford)</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+A closure is a special kind of object that combines two things: a function, and the environment in which that function was created. The environment consists of any local variables that were in-scope at the time that the closure was created. <span class="small">Mozilla Developer Network</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_revealing_module_pattern">4.3. Revealing Module Pattern</h3>
+<div class="listingblock">
+<div class="title">rmp.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> person = (<span class="keyword">function</span>() {
+  <span class="comment">// Constructor</span>
+  <span class="keyword">function</span> <span class="function">Person</span>(name) {
+    <span class="local-variable">this</span>.name = name
+  }
+
+  <span class="comment">// Factory</span>
+  <span class="keyword">function</span> <span class="function">Create</span>(name) {
+    <span class="keyword">return</span> <span class="keyword">new</span> Person(name);
+  }
+
+  <span class="comment">// Export of the factory method</span>
+  <span class="keyword">return</span> {
+    <span class="key">CreatePerson</span>: Create
+  };
+})();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_namespaces">4.4. Namespaces</h3>
+<div class="listingblock">
+<div class="title">namespaces.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> De = {};
+De.Nk = {};
+De.Nk.Person = {};
+(<span class="keyword">function</span>() {
+  <span class="keyword">function</span> <span class="function">Person</span>(name) {
+    <span class="local-variable">this</span>.name = name
+  }
+
+  <span class="keyword">function</span> <span class="function">Create</span>(name) {
+    <span class="keyword">return</span> <span class="keyword">new</span> Person(name);
+  }
+
+  De.Nk.Person.CreatePerson = Create;
+})();
+
+<span class="keyword">var</span> john = De.Nk.Person.CreatePerson(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+console.log(john.name);
+<span class="comment">// -&gt; &quot;John&quot;</span>
+
+console.log(De.Nk.Person.Person);
+<span class="comment">// -&gt; undefined</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_import">4.5. Import</h3>
+<div class="listingblock">
+<div class="title">import1.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> De = {};
+De.Nk = {};
+De.Nk.Person = {};
+(<span class="keyword">function</span>(person) {
+  <span class="keyword">function</span> <span class="function">Person</span>(name) {
+    <span class="local-variable">this</span>.name = name
+  }
+
+  <span class="keyword">function</span> <span class="function">Create</span>(name) {
+    <span class="keyword">return</span> <span class="keyword">new</span> Person(name);
+  }
+
+  person.CreatePerson = Create;
+})(De.Nk.Person);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">import2.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">De.Nk.Main = {};
+(<span class="keyword">function</span>(main, person) {
+  <span class="keyword">function</span> <span class="function">Main</span>() {
+    <span class="keyword">var</span> john = person.CreatePerson(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+    console.log(john.name);
+    <span class="comment">// -&gt; &quot;John&quot;</span>
+
+    console.log(person.Person);
+    <span class="comment">// -&gt; undefined</span>
+  }
+  main.Main = Main;
+})(De.Nk.Main, De.Nk.Person);
+
+De.Nk.Main.Main();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_amd">4.6. AMD</h3>
+<div class="paragraph">
+<p>Asynchronous Module Definition</p>
+</div>
+<div class="listingblock">
+<div class="title">amd-usage.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">define(
+[<span class="string"><span class="delimiter">'</span><span class="content">de/nk/person</span><span class="delimiter">'</span></span>], <span class="keyword">function</span>(person) {
+  <span class="keyword">var</span> john = person.CreatePerson(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+});</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">amd-definition.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">define(<span class="string"><span class="delimiter">&quot;</span><span class="content">person</span><span class="delimiter">&quot;</span></span>, [], <span class="keyword">function</span>() {
+  <span class="comment">// ...</span>
+  <span class="keyword">return</span> {
+    <span class="key">CreatePerson</span>: Create
+  };
+});</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="http://requirejs.org">RequireJS</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_commonjs">4.7. CommonJS</h3>
+<div class="listingblock">
+<div class="title">commonjs-usage.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> person = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">de/nk/person</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// ...</span>
+
+<span class="keyword">var</span> niko = person.CreatePerson(<span class="string"><span class="delimiter">&quot;</span><span class="content">Niko</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">commonjs-definition.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// ...</span>
+module.exports.CreatePerson = Create;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="http://www.commonjs.org">CommonJS</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ecmascript_2015_es6_language_features">5. ECMAScript 2015 (ES6) Language Features</h2>
+<h2 id="_other_stuff">5. Other Stuff</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_this">5.1. this</h3>
+<div class="sect3">
+<h4 id="_global_scope">5.1.1. Global Scope</h4>
+<div class="listingblock">
+<div class="title">this-globalscope.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> person = {<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Niko</span><span class="delimiter">&quot;</span></span>};
 
+console.log(<span class="local-variable">this</span>.person);
+<span class="comment">// -&gt; Object {name: &quot;Niko&quot;}</span>
+
+console.log(person === <span class="local-variable">this</span>.person);
+<span class="comment">// -&gt; true</span>
+
+<span class="comment">// in Browsers</span>
+console.log(<span class="local-variable">this</span> === window);
+<span class="comment">// -&gt; true</span>
+
+console.log(<span class="local-variable">this</span>.person === window.person);
+<span class="comment">// -&gt; true</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_constructor_2">5.1.2. Constructor</h4>
+<div class="listingblock">
+<div class="title">this-constructor.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">Person</span>(name) {
+    <span class="local-variable">this</span>.name = name;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_direct_method_calls">5.1.3. Direct Method Calls</h4>
+<div class="listingblock">
+<div class="title">this-direct-method-calls.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">Person</span>(name) {
+    <span class="local-variable">this</span>.name = name;
+}
+
+Person.prototype.<span class="function">getName</span> = <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.name;
+}
+
+<span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+console.log(john.getName());
+<span class="comment">// -&gt; &quot;John&quot;</span>
+
+
+<span class="keyword">var</span> jack = {<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Jack</span><span class="delimiter">&quot;</span></span>};
+jack.getName = john.getName;
+console.log(jack.getName());
+<span class="comment">// -&gt; ?</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_call_and_apply">5.1.4. Call and Apply</h4>
+<div class="listingblock">
+<div class="title">call-apply.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">Person</span>(name) {
+    <span class="local-variable">this</span>.name = name;
+}
+Person.prototype.<span class="function">getName</span> = <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.name;
+}
+<span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+
+<span class="keyword">var</span> jack = {<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Jack</span><span class="delimiter">&quot;</span></span>};
+
+console.log(john.getName.call(jack));
+<span class="comment">// -&gt; &quot;Jack&quot;</span>
+console.log(john.getName.apply(jack));
+<span class="comment">// -&gt; &quot;Jack&quot;</span>
+
+
+<span class="keyword">function</span> <span class="function">fullName</span>(title, lastName) {
+  <span class="keyword">return</span> title + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.name + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + lastName;
+}
+
+<span class="keyword">var</span> fullName1 = fullName.call(jack, <span class="string"><span class="delimiter">&quot;</span><span class="content">Mr.</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Johnson</span><span class="delimiter">&quot;</span></span>);
+console.log(fullName1);
+<span class="comment">// -&gt; Mr. Jack Johnson</span>
+
+<span class="keyword">var</span> fullName2 = fullName.apply(jack, [<span class="string"><span class="delimiter">&quot;</span><span class="content">Mr.</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Johnson</span><span class="delimiter">&quot;</span></span>]);
+console.log(fullName2);
+<span class="comment">// -&gt; Mr. Jack Johnson</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bind">5.1.5. Bind</h4>
+<div class="listingblock">
+<div class="title">bind.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> john = {<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>};
+
+<span class="keyword">function</span> <span class="function">fullName</span>(title, lastName) {
+  <span class="keyword">return</span> title + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.name + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + lastName;
+}
+
+
+<span class="keyword">var</span> bound1 = fullName.bind(john);
+
+<span class="keyword">var</span> fullName1 = bound1(<span class="string"><span class="delimiter">&quot;</span><span class="content">Mr.</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Doe</span><span class="delimiter">&quot;</span></span>);
+console.log(fullName1);
+<span class="comment">// -&gt; Mr. John Doe</span>
+
+
+<span class="keyword">var</span> bound2 = fullName.bind(john, <span class="string"><span class="delimiter">&quot;</span><span class="content">Mr.</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Doe</span><span class="delimiter">&quot;</span></span>);
+
+<span class="keyword">var</span> fullName2 = bound2();
+console.log(fullName2);
+<span class="comment">// -&gt; Mr. John Doe</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_statics">5.2. Statics</h3>
+<div class="listingblock">
+<div class="title">statics.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">Person</span>(name) {
+    <span class="local-variable">this</span>.name = name;
+}
+
+<span class="comment">/**
+ * @type {string}
+ * @static
+ */</span>
+Person.favouriteName = <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>;
+
+<span class="comment">/**
+ * @returns {string}
+ * @static
+ */</span>
+Person.<span class="function">getFavouriteName</span> = <span class="keyword">function</span>() {
+    <span class="keyword">return</span> Person.favouriteName;
+}
+
+console.log(Person.favouriteName);
+<span class="comment">// -&gt; &quot;John&quot;</span>
+console.log(Person.getFavouriteName());
+<span class="comment">// -&gt; &quot;John&quot;;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enumerations">5.3. Enumerations</h3>
+<div class="listingblock">
+<div class="title">enums.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">/**
+ * @enum {string}
+ */</span>
+<span class="keyword">var</span> Gender = {
+    <span class="key">MALE</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">M</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">FEMALE</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">F</span><span class="delimiter">&quot;</span></span>
+}
+
+<span class="comment">/**
+ * @type {Gender}
+ */</span>
+<span class="keyword">var</span> g = Gender.MALE;
+console.log(g);
+<span class="comment">// -&gt; &quot;M&quot;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_overloading">5.4. Overloading</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+No method/function overloading possible.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_regular_expressions">5.5. Regular Expressions</h3>
+<div class="listingblock">
+<div class="title">regex.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> regexp = <span class="regexp"><span class="delimiter">/</span><span class="content">xy+z</span><span class="delimiter">/</span></span>;
+<span class="comment">// or</span>
+<span class="keyword">var</span> regexp = <span class="keyword">new</span> RegExp(<span class="string"><span class="delimiter">&quot;</span><span class="content">xy+z</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// does not fit</span>
+<span class="keyword">var</span> result = regexp.exec(<span class="string"><span class="delimiter">&quot;</span><span class="content">Some characters xyyyyyy</span><span class="delimiter">&quot;</span></span>);
+console.log(result);
+<span class="comment">// -&gt; null</span>
+
+<span class="comment">// fits</span>
+<span class="keyword">var</span> result = regexp.exec(<span class="string"><span class="delimiter">&quot;</span><span class="content">Some characters xyyyyyz</span><span class="delimiter">&quot;</span></span>);
+console.log(result);
+<span class="comment">// -&gt; [&quot;xyyyyyz&quot;, index: 16, input: &quot;Some characters xyyyyyz&quot;]</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_typescript">6. TypeScript</h2>
+<h2 id="_ecmascript_2015_es6_language_features">6. ECMAScript 2015 (ES6) Language Features</h2>
 <div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="http://www.ecma-international.org/ecma-262/6.0" class="bare">http://www.ecma-international.org/ecma-262/6.0</a><br>
+<a href="http://www.ecma-international.org/ecma-262/7.0" class="bare">http://www.ecma-international.org/ecma-262/7.0</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_classes_inheritance">6.1. Classes &amp; Inheritance</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_arrow_functions">6.2. Arrow Functions</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_scopes_2">6.3. Scopes</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_template_strings">6.4. Template Strings</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_destructuring">6.5. Destructuring</h3>
+<div class="paragraph">
+<p>???</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_static_elements">6.6. Static Elements</h3>
+<div class="paragraph">
+<p>???</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_extended_object_literals">6.7. Extended Object Literals</h3>
+<div class="paragraph">
+<p>???</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_default_and_rest_parameter">6.8. Default- and Rest-Parameter</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_spread_operator">6.9. Spread Operator</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_object_assign_and_spraed_operator_es8">6.10. Object.assign() and Spraed Operator (ES8)</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_modules_exports_and_imports">6.11. Modules, Exports and Imports</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_promises">6.12. Promises</h3>
 
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="_contact">7. Contact</h2>
+<h2 id="_testing">7. Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are testing frameworks, assertion libraries and test runners.
+Following, a free choice of all of them</p>
+</div>
+<div class="sect2">
+<h3 id="_mocha">7.1. Mocha</h3>
+<div class="paragraph">
+<p><a href="http://mochajs.org" class="bare">http://mochajs.org</a></p>
+</div>
+<div class="listingblock">
+<div class="title">mocha.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> assert = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">assert</span><span class="delimiter">&quot;</span></span>);
+
+describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">Array</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>() {
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">#indexOf()</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>() {
+
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">should return -1 when the value is not present</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>() {
+      assert.equal(-<span class="integer">1</span>, [<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>].indexOf(<span class="integer">5</span>));
+      assert.equal(-<span class="integer">1</span>, [<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>].indexOf(<span class="integer">0</span>));
+    });
+
+  });
+});</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$  mocha
+
+  Array
+    #indexOf()
+      ✓ should return -1 when the value is not present
+
+  1 passing (6ms)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jasmine">7.2. Jasmine</h3>
+<div class="paragraph">
+<p><a href="http://jasmine.github.io" class="bare">http://jasmine.github.io</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_karma">7.3. Karma</h3>
+<div class="paragraph">
+<p><a href="https://karma-runner.github.io" class="bare">https://karma-runner.github.io</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_unitjs">7.4. UnitJS</h3>
+<div class="paragraph">
+<p><a href="http://unitjs.com" class="bare">http://unitjs.com</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_assertion_libraries">7.5. Assertion Libraries</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Chai <a href="http://chaijs.com" class="bare">http://chaijs.com</a></p>
+</li>
+<li>
+<p>Should <a href="http://shouldjs.github.io" class="bare">http://shouldjs.github.io</a></p>
+</li>
+<li>
+<p>Expect <a href="https://github.com/Automattic/expect.js" class="bare">https://github.com/Automattic/expect.js</a></p>
+</li>
+<li>
+<p><em>and many more&#8230;&#8203;</em></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ecosystem_build_packaging">8. Ecosystem, Build &amp; Packaging</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_code_checker_linter">8.1. Code Checker / Linter</h3>
+<div class="paragraph">
+<p>Equivalents to Checkstyle, PMD, Findbugs, etc&#8230;&#8203;</p>
+</div>
+<div class="sect3">
+<h4 id="_jslint">8.1.1. JSLint</h4>
+<div class="paragraph">
+<p><a href="http://www.jslint.com" class="bare">http://www.jslint.com</a></p>
+</div>
+<div class="paragraph">
+<p>by Douglas Crockford</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_jshint">8.1.2. JSHint</h4>
+<div class="paragraph">
+<p><a href="http://jshint.com" class="bare">http://jshint.com</a></p>
+</div>
+<div class="paragraph">
+<p>forked by Anton Kovalyov</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_eslint">8.1.3. ESLint</h4>
+<div class="paragraph">
+<p><a href="http://eslint.org" class="bare">http://eslint.org</a></p>
+</div>
+<div class="paragraph">
+<p>highly configurable</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_documentation">8.2. Code Documentation</h3>
+<div class="paragraph">
+<p>JSDoc</p>
+</div>
+<div class="paragraph">
+<p><a href="http://usejsdoc.org" class="bare">http://usejsdoc.org</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_minifying_uglifying">8.3. Minifying &amp; Uglifying</h3>
+<div class="listingblock">
+<div class="title">source.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> person = {};
+(<span class="keyword">function</span>() {
+  <span class="comment">// Constructor</span>
+  <span class="keyword">function</span> <span class="function">Person</span>(name) {
+    <span class="local-variable">this</span>.name = name;
+  }
+  <span class="comment">// Factory</span>
+  <span class="keyword">function</span> <span class="function">CreatePerson</span>(name) {
+    <span class="keyword">return</span> <span class="keyword">new</span> Person(name);
+  }
+  <span class="comment">// export of the factory method</span>
+  person.CreatePerson = CreatePerson;
+})();</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">minified.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> person={};!<span class="keyword">function</span>(){<span class="keyword">function</span> <span class="function">n</span>(n){<span class="local-variable">this</span>.name=n}<span class="keyword">function</span> <span class="function">e</span>(e){<span class="keyword">return</span> <span class="keyword">new</span> n(e)}person.CreatePerson=e}();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_package_manager">8.4. Package Manager</h3>
+<div class="sect3">
+<h4 id="_npm">8.4.1. NPM</h4>
+<div class="paragraph">
+<p>Node Package Manager</p>
+</div>
+<div class="paragraph">
+<p><em>(Maven Repository for Java)</em></p>
+</div>
+<div class="paragraph">
+<p><a href="https://npmjs.org" class="bare">https://npmjs.org</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_webpack">8.4.2. Webpack</h4>
+<div class="paragraph">
+<p>Module Bundler</p>
+</div>
+<div class="paragraph">
+<p><em>("Fat Jar" in Java)</em></p>
+</div>
+<div class="paragraph">
+<p><a href="https://webpack.github.io" class="bare">https://webpack.github.io</a></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/webpack.png" alt="webpack" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><span class="small">Source: Webpack Website</span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_task_runner">8.5. Task Runner</h3>
+<div class="paragraph">
+<p>Something like Ant, Maven, Gradle, but only in parts.</p>
+</div>
+<div class="sect3">
+<h4 id="_grunt">8.5.1. Grunt</h4>
+<div class="paragraph">
+<p><a href="http://gruntjs.com" class="bare">http://gruntjs.com</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_gulp">8.5.2. Gulp</h4>
+<div class="paragraph">
+<p><a href="http://gulpjs.com" class="bare">http://gulpjs.com</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_typescript">9. TypeScript</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="http://www.typescriptlang.org" class="bare">http://www.typescriptlang.org</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contact">10. Contact</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Niko Köbler IT-Beratung</p>
@@ -1245,7 +2043,7 @@ console.log(sum);
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-07-26 19:10:37 UTC
+Last updated 2016-07-27 06:35:04 UTC
 </div>
 </div>
 </body>
