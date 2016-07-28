@@ -116,7 +116,20 @@
 <li><a href="#_task_runner">8.5. Task Runner</a></li>
 </ul>
 </li>
-<li><a href="#_typescript">9. TypeScript</a></li>
+<li><a href="#_typescript">9. TypeScript</a>
+<ul class="sectlevel2">
+<li><a href="#_type_declaration">9.1. Type Declaration</a></li>
+<li><a href="#_types_interfaces">9.2. Types &amp; Interfaces</a></li>
+<li><a href="#_method_interfaces">9.3. Method Interfaces</a></li>
+<li><a href="#_function_extensions_with_lambdas">9.4. Function Extensions with Lambdas</a></li>
+<li><a href="#_parameters_2">9.5. Parameters</a></li>
+<li><a href="#_classes">9.6. Classes</a></li>
+<li><a href="#_inheritance">9.7. Inheritance</a></li>
+<li><a href="#_statics_2">9.8. Statics</a></li>
+<li><a href="#_generics">9.9. Generics</a></li>
+<li><a href="#_modules_namespaces">9.10. Modules &amp; Namespaces</a></li>
+</ul>
+</li>
 <li><a href="#_contact">10. Contact</a></li>
 </ul>
 </div>
@@ -1804,7 +1817,7 @@ console.log(result);
 <div class="sectionbody">
 <div class="paragraph">
 <p>There are testing frameworks, assertion libraries and test runners.
-Following, a free choice of all of them</p>
+Following, a free choice of all of them. There are more available, of course.</p>
 </div>
 <div class="sect2">
 <h3 id="_mocha">7.1. Mocha</h3>
@@ -1839,6 +1852,59 @@ describe(<span class="string"><span class="delimiter">&quot;</span><span class="
   1 passing (6ms)</code></pre>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_async_tests">7.1.1. Async Tests</h4>
+<div class="listingblock">
+<div class="title">async-tests.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">describe(<span class="string"><span class="delimiter">'</span><span class="content">Person</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+  describe(<span class="string"><span class="delimiter">'</span><span class="content">#save()</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    it(<span class="string"><span class="delimiter">'</span><span class="content">should save without error</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(done) {
+      <span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string"><span class="delimiter">'</span><span class="content">John</span><span class="delimiter">'</span></span>);
+      person.save(<span class="keyword">function</span>(err) {
+        <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;
+        done();
+      });
+    });
+  });
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Simply call the <code>done</code> callback, when the async test code is completed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_hooks">7.1.2. Hooks</h4>
+<div class="listingblock">
+<div class="title">hooks.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">describe(<span class="string"><span class="delimiter">'</span><span class="content">hooks</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+
+  before(<span class="keyword">function</span>() {
+    <span class="comment">// runs before all tests in this block</span>
+  });
+
+  after(<span class="keyword">function</span>() {
+    <span class="comment">// runs after all tests in this block</span>
+  });
+
+  beforeEach(<span class="keyword">function</span>() {
+    <span class="comment">// runs before each test in this block</span>
+  });
+
+  afterEach(<span class="keyword">function</span>() {
+    <span class="comment">// runs after each test in this block</span>
+  });
+
+  <span class="comment">// test cases</span>
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similar to the <code>@BeforeClass</code>, <code>@Before</code>, <code>@After</code> and <code>@AfterClass</code> methods in JUnit.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_jasmine">7.2. Jasmine</h3>
@@ -1860,21 +1926,54 @@ describe(<span class="string"><span class="delimiter">&quot;</span><span class="
 </div>
 <div class="sect2">
 <h3 id="_assertion_libraries">7.5. Assertion Libraries</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Chai <a href="http://chaijs.com" class="bare">http://chaijs.com</a></p>
-</li>
-<li>
-<p>Should <a href="http://shouldjs.github.io" class="bare">http://shouldjs.github.io</a></p>
-</li>
-<li>
-<p>Expect <a href="https://github.com/Automattic/expect.js" class="bare">https://github.com/Automattic/expect.js</a></p>
-</li>
-<li>
-<p><em>and many more&#8230;&#8203;</em></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The following assertion libraries are only a selection, there are many more.</p>
+</div>
+<div class="sect3">
+<h4 id="_assert">7.5.1. Assert</h4>
+<div class="paragraph">
+<p><a href="https://github.com/defunctzombie/commonjs-assert" class="bare">https://github.com/defunctzombie/commonjs-assert</a></p>
+</div>
+<div class="listingblock">
+<div class="title">assert.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">assert.equal(<span class="integer">5</span>, <span class="integer">5</span>);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_should">7.5.2. Should</h4>
+<div class="paragraph">
+<p><a href="http://shouldjs.github.io" class="bare">http://shouldjs.github.io</a></p>
+</div>
+<div class="listingblock">
+<div class="title">should.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">(<span class="integer">5</span>).should.be.exactly(<span class="integer">5</span>).and.be.a.Number();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_expect">7.5.3. Expect</h4>
+<div class="paragraph">
+<p><a href="https://github.com/Automattic/expect.js" class="bare">https://github.com/Automattic/expect.js</a></p>
+</div>
+<div class="listingblock">
+<div class="title">expect.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">expect(<span class="integer">5</span>).to.be(<span class="integer">5</span>);
+expect(<span class="integer">5</span>).to.be.a(<span class="string"><span class="delimiter">'</span><span class="content">number</span><span class="delimiter">'</span></span>);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_chai">7.5.4. Chai</h4>
+<div class="paragraph">
+<p><a href="http://chaijs.com" class="bare">http://chaijs.com</a></p>
+</div>
+<div class="paragraph">
+<p>The Chai assertion library provides interfaces to the three above mentioned.</p>
+</div>
 </div>
 </div>
 </div>
@@ -2009,6 +2108,12 @@ describe(<span class="string"><span class="delimiter">&quot;</span><span class="
 <div class="sect1">
 <h2 id="_typescript">9. TypeScript</h2>
 <div class="sectionbody">
+<div class="paragraph lead">
+<p>Statically Typed JavaScript</p>
+</div>
+<div class="paragraph lead">
+<p>JavaScript that scales</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2020,6 +2125,357 @@ describe(<span class="string"><span class="delimiter">&quot;</span><span class="
 </td>
 </tr>
 </table>
+</div>
+<div class="sect2">
+<h3 id="_type_declaration">9.1. Type Declaration</h3>
+<div class="listingblock">
+<div class="title">javascript.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> str1 = <span class="string"><span class="delimiter">&quot;</span><span class="content">Some String</span><span class="delimiter">&quot;</span></span>;
+str1 = <span class="integer">10</span>;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">typescript.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> str1: string = <span class="string"><span class="delimiter">&quot;</span><span class="content">Some String</span><span class="delimiter">&quot;</span></span>;
+str1 = <span class="integer">10</span>;</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_compile">9.1.1. Compile</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">tsc example.ts
+
+error TS2011: Cannot convert 'number' to 'string'.</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_types_interfaces">9.2. Types &amp; Interfaces</h3>
+<div class="listingblock">
+<div class="title">javascript.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">eatThis</span>(conf) {
+  console.log(conf.name);
+  <span class="keyword">if</span> (conf.singleLine) {
+    console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">----</span><span class="delimiter">&quot;</span></span>);
+  }
+}
+
+eatThis({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Niko</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">singleLine</span>: <span class="predefined-constant">true</span>
+});</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">typescript.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">eatThis</span>(conf: {
+  <span class="key">name</span>: String;
+  singleLine?: <span class="reserved">boolean</span>
+}) {
+  <span class="comment">// code as usual</span>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">interfaces.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">interface</span> EatThisConfig {
+  <span class="key">name</span>: String;
+  singleLine?: <span class="reserved">boolean</span>
+}
+
+<span class="keyword">function</span> <span class="function">eatThis</span>(conf: EatThisConfig) {
+  <span class="comment">// code as usual</span>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">typescript.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">eatThis({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">singleLine</span>: <span class="integer">10</span>
+});</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">error TS2082: Supplied parameters do not match any signature of call target:
+Types of property 'singleLine' of types '{ name:string; singeLine: number; }'
+and 'EatThisConfig' are incompatible.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_method_interfaces">9.3. Method Interfaces</h3>
+<div class="listingblock">
+<div class="title">method-interface.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">interface</span> Eater {
+  eatThis(conf: EatThisConfig): <span class="keyword">void</span>;
+}
+
+<span class="keyword">var</span> eater: Eater = {
+  <span class="function">eatThis</span>: <span class="keyword">function</span> (conf: EatThisConfig) {
+    <span class="comment">// code as usual</span>
+  }
+};
+
+eater.eatThis({
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">singleLine</span>: <span class="predefined-constant">true</span>
+});</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_compiled_code">9.3.1. Compiled Code</h4>
+<div class="listingblock">
+<div class="title">method-interface.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> <span class="function">eatThis</span> = <span class="keyword">function</span>(conf) {
+  <span class="comment">// code as usual</span>
+};</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_function_extensions_with_lambdas">9.4. Function Extensions with Lambdas</h3>
+<div class="listingblock">
+<div class="title">wont-work.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> sumRobot = {
+  <span class="key">threshold</span>: <span class="integer">4</span>,
+  <span class="function">sum</span>: <span class="keyword">function</span>(numbers) {
+    <span class="keyword">var</span> <span class="function">reduceFunc</span> = <span class="keyword">function</span>(reduced, current) {
+      <span class="keyword">return</span> current &gt; <span class="local-variable">this</span>.threshold ? (reduced + current) : reduced;
+    };
+    <span class="keyword">return</span> numbers.reduce(reduceFunc, <span class="integer">0</span>);
+  }
+};</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">works.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> sumRobot = {
+  <span class="key">threshold</span>: <span class="integer">4</span>,
+  <span class="function">sum</span>: <span class="keyword">function</span>(numbers) {
+    <span class="keyword">var</span> that = <span class="local-variable">this</span>;
+    <span class="keyword">var</span> <span class="function">reduceFunc</span> = <span class="keyword">function</span>(reduced, current) {
+      <span class="keyword">return</span> current &gt; that.threshold ? (reduced + current) : reduced;
+    };
+    <span class="keyword">return</span> numbers.reduce(reduceFunc, <span class="integer">0</span>);
+  }
+};</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">lambda.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> reduceFunc = (reduced, current) =&gt; {
+  <span class="keyword">return</span> current &gt; <span class="local-variable">this</span>.threshold ? (reduced + current) : reduced;
+};</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">shorter.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> reduceFunc = (reduced, current) =&gt; current &gt; <span class="local-variable">this</span>.threshold ? (reduced + current) : reduced;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_parameters_2">9.5. Parameters</h3>
+<div class="listingblock">
+<div class="title">params.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// function call</span>
+<span class="keyword">var</span> sums = sumRobot.sum([<span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>, <span class="integer">6</span>]);
+
+<span class="comment">// optional parameters</span>
+<span class="function">sum</span>: <span class="keyword">function</span> (numbers?) {...};
+
+<span class="comment">// optional params with default value</span>
+<span class="function">sum</span>: <span class="keyword">function</span> (numbers = []) {...};
+
+<span class="comment">// rest parameters</span>
+<span class="keyword">var</span> sums = sumRobot.sum(<span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>, <span class="integer">6</span>);
+
+<span class="function">sum</span>: <span class="keyword">function</span> (...numbers) {...};</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_classes">9.6. Classes</h3>
+<div class="listingblock">
+<div class="title">person.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">Person</span>(name) {
+  <span class="local-variable">this</span>.name = name;
+}
+Person.prototype.<span class="function">getName</span> = <span class="keyword">function</span>() {
+  <span class="keyword">return</span> <span class="local-variable">this</span>.name;
+};</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">person.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">class</span> Person {
+  <span class="reserved">private</span> name: string;
+  constructor(name: string) {
+    <span class="local-variable">this</span>.name = name;
+  }
+  getName(): string {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.name;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">person-short.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">class</span> Person {
+  constructor(<span class="reserved">private</span> name: string) { }
+  getName(): string {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.name;
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_inheritance">9.7. Inheritance</h3>
+<div class="listingblock">
+<div class="title">person.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">class</span> Person {
+  constructor(<span class="reserved">private</span> name: string,
+              <span class="reserved">private</span> gender: string) {}
+  getName(): string {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.name;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">male.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">class</span> Male <span class="reserved">extends</span> Person {
+  constructor(name: string) {
+    <span class="reserved">super</span>(name, <span class="string"><span class="delimiter">&quot;</span><span class="content">male</span><span class="delimiter">&quot;</span></span>);
+  }
+  getName(): string {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Mr. </span><span class="delimiter">&quot;</span></span> + <span class="reserved">super</span>.getName();
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_statics_2">9.8. Statics</h3>
+<div class="listingblock">
+<div class="title">statics.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">Person</span>() {}
+Person.<span class="function">getFavouriteName</span> = <span class="keyword">function</span>() {
+  <span class="keyword">return</span> Person.favouriteName;
+};
+Person.favouriteName = <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>;
+
+console.log(Person.getFavouriteName());
+<span class="comment">// -&gt; &quot;John&quot;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">statics.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">class</span> Person {
+  <span class="reserved">private</span> <span class="reserved">static</span> favouriteName: string = <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>;
+  <span class="reserved">static</span> getFavouriteName(): string {
+    <span class="keyword">return</span> Person.favouriteName;
+  }
+}
+console.log(Person.getFavouriteName());</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generics">9.9. Generics</h3>
+<div class="listingblock">
+<div class="title">dogs.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> dogs = [];
+dogs.push(<span class="keyword">new</span> Dog(<span class="string"><span class="delimiter">&quot;</span><span class="content">Buddy</span><span class="delimiter">&quot;</span></span>));
+
+dogs.forEach(<span class="keyword">function</span>(dog) {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">The dog is called </span><span class="delimiter">&quot;</span></span> + dog.name);
+});</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">dogs.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> dogs: Array&lt;Dog&gt; = [];
+dogs.push(<span class="keyword">new</span> Dog(<span class="string"><span class="delimiter">&quot;</span><span class="content">Buddy</span><span class="delimiter">&quot;</span></span>));
+
+dogs.forEach(<span class="keyword">function</span>(dog: Dog) {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">The dog is called </span><span class="delimiter">&quot;</span></span> + dog.name);
+});</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">animals.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">ar animals: Array&lt;Animal&gt;;
+<span class="keyword">var</span> dogs: Array&lt;Dog&gt;;
+<span class="keyword">var</span> cats: Array&lt;Cat&gt;;
+
+<span class="comment">// works (not in Java)</span>
+animals = dogs;
+animals = cats;
+
+<span class="comment">// doesn't work</span>
+dogs = cats</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modules_namespaces">9.10. Modules &amp; Namespaces</h3>
+<div class="listingblock">
+<div class="title">module.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">module Person {
+  <span class="reserved">export</span> <span class="reserved">class</span> Person {
+    constructor(<span class="reserved">public</span> name: string) {}
+  }
+  <span class="reserved">export</span> <span class="keyword">function</span> <span class="function">Create</span>(name) {
+    <span class="keyword">return</span> <span class="keyword">new</span> Person(name);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">namespace.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">module De {
+  <span class="reserved">export</span> module Nk {
+    <span class="reserved">export</span> module Person {
+      <span class="comment">// the code goes here...</span>
+    }
+  }
+}
+
+<span class="keyword">var</span> john = De.Nk.Person.Create(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2043,7 +2499,7 @@ describe(<span class="string"><span class="delimiter">&quot;</span><span class="
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-07-27 06:35:04 UTC
+Last updated 2016-07-28 15:02:05 UTC
 </div>
 </div>
 </body>
