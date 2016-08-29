@@ -842,6 +842,10 @@ Object.getPrototypeOf(Person.prototype) === Object.prototype;</code></pre>
   <span class="local-variable">this</span>.name = name;
   <span class="local-variable">this</span>.gender = gender;
 }
+Person.prototype.<span class="function">getName</span> = <span class="keyword">function</span>() {
+  <span class="keyword">return</span> <span class="local-variable">this</span>.name;
+}
+
 <span class="comment">// creates a male person</span>
 <span class="keyword">function</span> <span class="function">Male</span>(name) {
   <span class="comment">// call the superconstructor</span>
@@ -849,24 +853,40 @@ Object.getPrototypeOf(Person.prototype) === Object.prototype;</code></pre>
 }
 <span class="comment">// returns the name of a male person</span>
 Male.prototype.<span class="function">getName</span> = <span class="keyword">function</span>() {
-  <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Mr. </span><span class="delimiter">&quot;</span></span> + Person.prototype
-                      .getName.call(<span class="local-variable">this</span>);
+  <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Mr. </span><span class="delimiter">&quot;</span></span> + Person.prototype.getName.call(<span class="local-variable">this</span>);
 };
-<span class="keyword">var</span> john = <span class="keyword">new</span> Male(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
-john.getName(); <span class="comment">// &quot;Mr. John&quot;</span>
-john.gender; <span class="comment">// &quot;male&quot;</span>
 
-john <span class="keyword">instanceof</span> Male;   <span class="comment">// true</span>
-john <span class="keyword">instanceof</span> Person; <span class="comment">// true</span>
-john <span class="keyword">instanceof</span> Object; <span class="comment">// true</span></code></pre>
+<span class="keyword">var</span> john = <span class="keyword">new</span> Male(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);
+console.log(john.getName()); <span class="comment">// &quot;Mr. John&quot;</span>
+console.log(john.gender); <span class="comment">// &quot;male&quot;</span>
+
+console.log(john <span class="keyword">instanceof</span> Male);   <span class="comment">// true</span>
+console.log(john <span class="keyword">instanceof</span> Person); <span class="comment">// false !!!</span>
+console.log(john <span class="keyword">instanceof</span> Object); <span class="comment">// true</span></code></pre>
 </div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>john</code> is not yet an instance of <code>Person</code>, because the prototype of <code>Male</code> is not yet <code>Person</code>.<br>
+We first have to set the prototype of <code>Male</code> with a new instance of <code>Person</code>.
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">Male.prototype <span class="keyword">instanceof</span> Person;
-<span class="comment">// -&gt; false</span>
+<pre class="CodeRay highlight"><code data-lang="javascript">Male.prototype <span class="keyword">instanceof</span> Person; <span class="comment">// -&gt; false</span>
+
 _extends(Male, Person);
 Male.prototype = <span class="keyword">new</span> Person();
+
+Male.protoype <span class="keyword">instanceof</span> Person; <span class="comment">// -&gt; true</span>
+console.log(john <span class="keyword">instanceof</span> Person); <span class="comment">// now true!</span>
 
 <span class="keyword">function</span> <span class="function">_extendsSimple</span>(_sub, _super) {
   _sub.prototype = <span class="keyword">new</span> _super();
@@ -874,6 +894,7 @@ Male.prototype = <span class="keyword">new</span> Person();
 
 console.log(Male.prototype);
 <span class="comment">// -&gt; Person {name: undefined, gender: undefined}</span>
+
 <span class="keyword">function</span> <span class="function">_extends</span>(_sub, _super) {
   <span class="keyword">var</span> <span class="function">__</span> = <span class="keyword">function</span>() {};
   __.prototype = _super.prototype;
@@ -1360,7 +1381,7 @@ An inner function always has access to the vars and parameters of its outer func
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-A closure is a special kind of object that combines two things: a function, and the environment in which that function was created. The environment consists of any local variables that were in-scope at the time that the closure was created. <span class="small">Mozilla Developer Network</span>
+A closure is a special kind of object that combines two things: a function, and the environment in which that function was created. The environment consists of any local variables that were in-scope at the time that the closure was created. <span class="small">(Mozilla Developer Network)</span>
 </td>
 </tr>
 </table>
@@ -3026,7 +3047,7 @@ dogs = cats</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-08-11 11:29:17 UTC
+Last updated 2016-08-29 08:38:09 UTC
 </div>
 </div>
 </body>
