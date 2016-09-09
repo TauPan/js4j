@@ -239,15 +239,15 @@ For details, please refer to the official specs.
 <div class="sect2">
 <h3 id="_hello_world">1.2. Hello World</h3>
 <div class="listingblock">
-<div class="title">hello.js</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript">console.log(<span class="string"><span class="delimiter">'</span><span class="content">Hello World!</span><span class="delimiter">'</span></span>);</code></pre>
-</div>
-</div>
-<div class="listingblock">
 <div class="title">Hello.java</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">hello.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">console.log(<span class="string"><span class="delimiter">'</span><span class="content">Hello World!</span><span class="delimiter">'</span></span>);</code></pre>
 </div>
 </div>
 </div>
@@ -289,7 +289,7 @@ console.log(obj.name);
 <span class="comment">// add properties</span>
 obj.skype = <span class="string"><span class="delimiter">&quot;</span><span class="content">jdoe</span><span class="delimiter">&quot;</span></span>;
 console.log(obj.skype);
-<span class="comment">// -&gt; &quot;nkoebler&quot;</span>
+<span class="comment">// -&gt; &quot;jdoe&quot;</span>
 
 obj.<span class="function">func</span> = <span class="keyword">function</span>() {
   <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">function call</span><span class="delimiter">&quot;</span></span>;
@@ -357,7 +357,7 @@ array.splice(<span class="integer">1</span>, <span class="integer">0</span>, <sp
 
 <span class="comment">// via Array (kind of StringBuilder in Java)</span>
 <span class="keyword">var</span> strings = [<span class="string"><span class="delimiter">&quot;</span><span class="content">JavaScript</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">is</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cool</span><span class="delimiter">&quot;</span></span>];
-builder.join(<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>);
+strings.join(<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>);
 <span class="comment">// -&gt; &quot;JavaScript is cool&quot;</span></code></pre>
 </div>
 </div>
@@ -417,6 +417,32 @@ builder.join(<span class="string"><span class="delimiter">&quot;</span><span cla
 
 <span class="keyword">var</span> bool = <span class="predefined-constant">true</span>;
 <span class="comment">// typeof -&gt; &quot;boolean&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Evaluates to <code>true</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined-constant">true</span>
+<span class="integer">1</span>
+<span class="string"><span class="delimiter">'</span><span class="content">any non empty string</span><span class="delimiter">'</span></span>
+{}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Evaluates to <code>false</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined-constant">false</span>
+<span class="integer">0</span>
+<span class="predefined-constant">undefined</span>
+<span class="predefined-constant">null</span>
++<span class="integer">0</span>
+-<span class="integer">0</span>
+<span class="predefined-constant">NaN</span>
+<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -516,6 +542,18 @@ a block comment
 <span class="keyword">var</span> obj3 = obj1;    obj1 === obj3;</code></pre>
 </div>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Although the new <code>Object.is()</code> function seems tom imply you can compare objects, it only compares values!
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_undefined_vs_null">1.7. undefined vs. null</h3>
@@ -547,7 +585,7 @@ a block comment
 <div class="ulist">
 <ul>
 <li>
-<p><code>if</code></p>
+<p><code>if</code> <em>(with abstract <code>ToBoolean</code> operation)</em></p>
 </li>
 <li>
 <p><code>switch</code></p>
@@ -3070,7 +3108,7 @@ dogs = cats</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-08-29 17:04:06 UTC
+Last updated 2016-09-09 09:41:22 UTC
 </div>
 </div>
 </body>
