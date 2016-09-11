@@ -80,6 +80,7 @@
 <li><a href="#_enumerations">5.3. Enumerations</a></li>
 <li><a href="#_overloading">5.4. Overloading</a></li>
 <li><a href="#_regular_expressions">5.5. Regular Expressions</a></li>
+<li><a href="#_json_json_schema">5.6. JSON &amp; JSON Schema</a></li>
 </ul>
 </li>
 <li><a href="#_ecmascript_2015_es6_language_features">6. ECMAScript 2015 (ES6) Language Features</a>
@@ -1808,6 +1809,85 @@ console.log(result);
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_json_json_schema">5.6. JSON &amp; JSON Schema</h3>
+<div class="sect3">
+<h4 id="_javascript_object_notation">5.6.1. JavaScript Object Notation</h4>
+<div class="listingblock">
+<div class="title">object.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> obj =
+{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">gender</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">male</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">bday</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1970-01-01T23:42:00</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">height</span><span class="delimiter">&quot;</span></span>: <span class="integer">180</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">full_age</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">hobbies</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">Swim</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Bike</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Run</span><span class="delimiter">&quot;</span></span>]
+}
+
+<span class="keyword">var</span> jsonString = JSON.stringify(obj);
+
+<span class="keyword">var</span> jsonObj = JSON.parse(jsonString);</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+In JSON, the object properties must always(!) be put in double-quotes!
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_json_schema">5.6.2. JSON Schema</h4>
+<div class="listingblock">
+<div class="title">schema.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">$schema</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://json-schema.org/draft-04/schema#</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Person</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">A Person with some attributes</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">object</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">properties</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>:   { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">gender</span><span class="delimiter">&quot;</span></span>: { <span class="key"><span class="delimiter">&quot;</span><span class="content">enum</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">male</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">female</span><span class="delimiter">&quot;</span></span>] },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">bday</span><span class="delimiter">&quot;</span></span>:   { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>, <span class="key"><span class="delimiter">&quot;</span><span class="content">format</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">date-time</span><span class="delimiter">&quot;</span></span> },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">height</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Height in cm</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">integer</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">minimum</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">full_age</span><span class="delimiter">&quot;</span></span>: { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">boolean</span><span class="delimiter">&quot;</span></span>, <span class="key"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span> },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">hobbies</span><span class="delimiter">&quot;</span></span>:  {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">array</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">items</span><span class="delimiter">&quot;</span></span>: { <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> },
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">uniqueItems</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span> }
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">additionalAttributes</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">false</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">gender</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+More information on the inoffical standard: <a href="http://json-schema.org/" class="bare">http://json-schema.org/</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3108,7 +3188,7 @@ dogs = cats</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-09 09:41:22 UTC
+Last updated 2016-09-11 14:18:19 UTC
 </div>
 </div>
 </body>
