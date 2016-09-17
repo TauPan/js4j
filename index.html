@@ -95,8 +95,8 @@
 <li><a href="#_default_and_rest_parameter_spread_operator">6.8. Default- and Rest-Parameter, Spread-Operator</a></li>
 <li><a href="#_object_assign_and_object_spread_operator">6.9. Object.assign() and Object Spread Operator</a></li>
 <li><a href="#_modules_exports_and_imports">6.10. Modules, Exports and Imports</a></li>
-<li><a href="#_set">6.11. Set</a></li>
-<li><a href="#_map">6.12. Map</a></li>
+<li><a href="#_map">6.11. Map</a></li>
+<li><a href="#_set">6.12. Set</a></li>
 <li><a href="#_promises">6.13. Promises</a></li>
 </ul>
 </li>
@@ -133,7 +133,13 @@
 </ul>
 </li>
 <li><a href="#_nashorn">10. Nashorn</a></li>
-<li><a href="#_contact">11. Contact</a></li>
+<li><a href="#_http_requests">11. HTTP Requests</a>
+<ul class="sectlevel2">
+<li><a href="#_xmlhttprequest">11.1. XMLHttpRequest</a></li>
+<li><a href="#_apis_and_libraries">11.2. APIs and Libraries</a></li>
+</ul>
+</li>
+<li><a href="#_contact">12. Contact</a></li>
 </ul>
 </div>
 </div>
@@ -1570,7 +1576,7 @@ De.Nk.Main.Main();</code></pre>
 
 <span class="comment">// ...</span>
 
-<span class="keyword">var</span> niko = person.CreatePerson(<span class="string"><span class="delimiter">&quot;</span><span class="content">Niko</span><span class="delimiter">&quot;</span></span>);</code></pre>
+<span class="keyword">var</span> john = person.CreatePerson(<span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>);</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1605,10 +1611,10 @@ module.exports.CreatePerson = Create;</code></pre>
 <div class="listingblock">
 <div class="title">this-globalscope.js</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> person = {<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Niko</span><span class="delimiter">&quot;</span></span>};
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> person = {<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>};
 
 console.log(<span class="local-variable">this</span>.person);
-<span class="comment">// -&gt; Object {name: &quot;Niko&quot;}</span>
+<span class="comment">// -&gt; Object {name: &quot;John&quot;}</span>
 
 console.log(person === <span class="local-variable">this</span>.person);
 <span class="comment">// -&gt; true</span>
@@ -1902,6 +1908,18 @@ More information on the inoffical standard: <a href="http://json-schema.org/" cl
 <td class="content">
 <a href="http://www.ecma-international.org/ecma-262/6.0" class="bare">http://www.ecma-international.org/ecma-262/6.0</a><br>
 <a href="http://www.ecma-international.org/ecma-262/7.0" class="bare">http://www.ecma-international.org/ecma-262/7.0</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<a href="http://kangax.github.io/compat-table/es6" class="bare">http://kangax.github.io/compat-table/es6</a>
 </td>
 </tr>
 </table>
@@ -2207,30 +2225,44 @@ There are NO static (member-)variables available!
 <div class="title">extended-object-literals.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// es5 way</span>
-<span class="keyword">function</span> <span class="function">getPerson</span>(name, age, sex) {
+<span class="keyword">function</span> <span class="function">getPerson</span>(name, age, gender) {
   <span class="keyword">return</span> {
     <span class="key">name</span>: name,
     <span class="key">age</span>: age,
-    <span class="key">sex</span>: sex
+    <span class="key">gender</span>: gender
   }
 }
 
 <span class="comment">// extended es6 way</span>
-<span class="keyword">function</span> <span class="function">getPerson</span>(name, age, sex) {
+<span class="keyword">function</span> <span class="function">getPerson</span>(name, age, gender) {
   <span class="keyword">return</span> {
+    <span class="comment">// shorthand property syntax, if key matches variable name</span>
     name,
     age,
-    sex
-  }
+    gender,
 
-  <span class="comment">// computed values</span>
-  [<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span> + name]: <span class="predefined-constant">true</span>
+    <span class="comment">// computed values now work with object literals</span>
+    [<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span> + name]: <span class="predefined-constant">true</span>,
 
-  <span class="comment">// method definition w/o function keyword &amp; colon</span>
-  sayHello() {
-    console.log(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.name);
+    <span class="comment">// method definition shorthand syntax w/o function keyword &amp; colon</span>
+    sayHello() {
+      console.log(<span class="string"><span class="delimiter">'</span><span class="content">Hello </span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.name);
+    }
   }
-}</code></pre>
+}
+
+const person = getPerson(<span class="string"><span class="delimiter">'</span><span class="content">John</span><span class="delimiter">'</span></span>, <span class="integer">42</span>, <span class="string"><span class="delimiter">'</span><span class="content">male</span><span class="delimiter">'</span></span>);
+console.log(person);
+<span class="comment">// output: {</span>
+<span class="comment">//   name: 'John',</span>
+<span class="comment">//   age: 42,</span>
+<span class="comment">//   gender: 'male'</span>
+<span class="comment">//   nameJohn: true,</span>
+<span class="comment">//   sayHello: function()</span>
+<span class="comment">// }</span>
+
+person.sayHello()
+<span class="comment">// 'Hello John'</span></code></pre>
 </div>
 </div>
 </div>
@@ -2239,12 +2271,12 @@ There are NO static (member-)variables available!
 <div class="listingblock">
 <div class="title">default-values.js</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">getPerson</span>(name, sex = <span class="string"><span class="delimiter">'</span><span class="content">male</span><span class="delimiter">'</span></span>) {
-  <span class="keyword">return</span> {name, sex};
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">function</span> <span class="function">getPerson</span>(name, gender = <span class="string"><span class="delimiter">'</span><span class="content">male</span><span class="delimiter">'</span></span>) {
+  <span class="keyword">return</span> {name, gender};
 }
 
 const person = getPerson(<span class="string"><span class="delimiter">'</span><span class="content">John</span><span class="delimiter">'</span></span>);
-<span class="comment">// {name: 'John', sex: 'male')</span></code></pre>
+<span class="comment">// {name: 'John', gender: 'male')</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2422,15 +2454,228 @@ No semicolon at the end on default exports (anonymous declarations)!
 </div>
 </div>
 <div class="sect2">
-<h3 id="_set">6.11. Set</h3>
-<div class="paragraph">
-<p><em>t.b.d.</em></p>
+<h3 id="_map">6.11. Map</h3>
+<div class="listingblock">
+<div class="title">map_basics.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let map = <span class="keyword">new</span> Map();
+
+map.set(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>, <span class="integer">123</span>);
+map.get(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>)
+<span class="comment">// 123</span>
+
+map.has(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>)
+<span class="comment">// true</span>
+map.<span class="keyword">delete</span>(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>)
+<span class="comment">// true</span>
+map.has(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>)
+<span class="comment">// false</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">map_size.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let map = <span class="keyword">new</span> Map();
+map.set(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+map.set(<span class="string"><span class="delimiter">'</span><span class="content">bar</span><span class="delimiter">'</span></span>, <span class="predefined-constant">false</span>);
+
+map.size
+<span class="comment">// 2</span>
+map.clear();
+map.size
+<span class="comment">// 0</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">map_setup1.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let map = <span class="keyword">new</span> Map([
+    [ <span class="integer">1</span>, <span class="string"><span class="delimiter">'</span><span class="content">one</span><span class="delimiter">'</span></span> ],
+    [ <span class="integer">2</span>, <span class="string"><span class="delimiter">'</span><span class="content">two</span><span class="delimiter">'</span></span> ],
+    [ <span class="integer">3</span>, <span class="string"><span class="delimiter">'</span><span class="content">three</span><span class="delimiter">'</span></span> ]
+]);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">map_setup2.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let map = <span class="keyword">new</span> Map()
+    .set(<span class="integer">1</span>, <span class="string"><span class="delimiter">'</span><span class="content">one</span><span class="delimiter">'</span></span>)
+    .set(<span class="integer">2</span>, <span class="string"><span class="delimiter">'</span><span class="content">two</span><span class="delimiter">'</span></span>)
+    .set(<span class="integer">3</span>, <span class="string"><span class="delimiter">'</span><span class="content">three</span><span class="delimiter">'</span></span>);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">map_keys.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let map = <span class="keyword">new</span> Map();
+
+const KEY1 = {};
+map.set(KEY1, <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>);
+console.log(map.get(KEY1)); <span class="comment">// hello</span>
+
+const KEY2 = {};
+map.set(KEY2, <span class="string"><span class="delimiter">'</span><span class="content">world</span><span class="delimiter">'</span></span>);
+console.log(map.get(KEY2)); <span class="comment">// world</span>
+
+map.set(<span class="predefined-constant">NaN</span>, <span class="string"><span class="delimiter">'</span><span class="content">hello world</span><span class="delimiter">'</span></span>);
+console.log(map.get(<span class="predefined-constant">NaN</span>)); <span class="comment">// hello world</span>
+
+map.get(<span class="string"><span class="delimiter">'</span><span class="content">asdf</span><span class="delimiter">'</span></span>)
+<span class="comment">// undefined</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">map_iterating.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let map = <span class="keyword">new</span> Map([
+    [<span class="predefined-constant">false</span>, <span class="string"><span class="delimiter">'</span><span class="content">no</span><span class="delimiter">'</span></span>],
+    [<span class="predefined-constant">true</span>,  <span class="string"><span class="delimiter">'</span><span class="content">yes</span><span class="delimiter">'</span></span>],
+]);
+
+<span class="comment">// keys()</span>
+<span class="keyword">for</span> (let key of map.keys()) {
+    console.log(key);
+}
+<span class="comment">// false</span>
+<span class="comment">// true</span>
+
+<span class="comment">// values()</span>
+<span class="keyword">for</span> (let value of map.values()) {
+    console.log(value);
+}
+<span class="comment">// no</span>
+<span class="comment">// yes</span>
+
+<span class="comment">// entries()</span>
+<span class="keyword">for</span> (let entry of map.entries()) {
+    console.log(entry[<span class="integer">0</span>], entry[<span class="integer">1</span>]);
+}
+<span class="comment">// false no</span>
+<span class="comment">// true yes</span>
+
+<span class="comment">// with destructuring</span>
+<span class="keyword">for</span> (let [key, value] of map.entries()) {
+    console.log(key, value);
+}
+
+<span class="comment">// or even</span>
+<span class="keyword">for</span> (let [key, value] of map) {
+    console.log(key, value);
+}
+<span class="comment">// because entries() is the default way of iterating over a map</span>
+
+<span class="comment">// forEach() (mirrored from Array.prototype.forEach, that's why value comes first)</span>
+map.forEach((value, key) =&gt; {
+    console.log(key, value);
+}
+<span class="predefined-constant">false</span> no
+<span class="predefined-constant">true</span> yes</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There&#8217;s also a <code>WeakMap</code> available, but without the iterating possibilities and no clear().
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_map">6.12. Map</h3>
-<div class="paragraph">
-<p><em>t.b.d.</em></p>
+<h3 id="_set">6.12. Set</h3>
+<div class="listingblock">
+<div class="title">set_basics.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let set = <span class="keyword">new</span> Set();
+set.add(<span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>);
+
+set.has(<span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>);
+<span class="comment">// true</span>
+set.<span class="keyword">delete</span>(<span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>);
+<span class="comment">// true</span>
+set.has(<span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>);
+<span class="comment">// false</span>
+
+set.add(<span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>);
+set.add(<span class="string"><span class="delimiter">'</span><span class="content">green</span><span class="delimiter">'</span></span>);
+
+set.size
+<span class="comment">// 2</span>
+set.clear();
+set.size
+<span class="comment">// 0</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">set_setup.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let set = <span class="keyword">new</span> Set([<span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">green</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">blue</span><span class="delimiter">'</span></span>]);
+<span class="comment">// or</span>
+let set = <span class="keyword">new</span> set().add(<span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>).add(<span class="string"><span class="delimiter">'</span><span class="content">green</span><span class="delimiter">'</span></span>).add(<span class="string"><span class="delimiter">'</span><span class="content">blue</span><span class="delimiter">'</span></span>);</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">set_values1.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let set = <span class="keyword">new</span> Set();
+
+set.add(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>);
+set.size
+<span class="comment">// 1</span>
+
+set.add(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>);
+set.size
+<span class="comment">// 1</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">set_values2.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let set = <span class="keyword">new</span> Set();
+
+set.add({});
+set.size
+<span class="comment">// 1</span>
+
+set.add({});
+set.size
+<span class="comment">// 2</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">set_iterating.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">let set = <span class="keyword">new</span> Set([<span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">green</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">blue</span><span class="delimiter">'</span></span>]);
+<span class="keyword">for</span> (let x of set) {
+    console.log(x);
+}
+<span class="comment">// red</span>
+<span class="comment">// green</span>
+<span class="comment">// blue</span>
+
+let arr = [...set]; <span class="comment">// ['red', 'green', 'blue']</span>
+
+<span class="comment">// de-duplicating an array</span>
+let arr = [<span class="integer">3</span>, <span class="integer">5</span>, <span class="integer">2</span>, <span class="integer">2</span>, <span class="integer">5</span>, <span class="integer">5</span>];
+let unique = [...<span class="keyword">new</span> Set(arr)]; <span class="comment">// [3, 5, 2]</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There&#8217;s also a <code>WeakSet</code> available.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -2847,7 +3092,7 @@ error TS2011: Cannot convert 'number' to 'string'.</code></pre>
 }
 
 eatThis({
-  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Niko</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">John</span><span class="delimiter">&quot;</span></span>,
   <span class="key">singleLine</span>: <span class="predefined-constant">true</span>
 });</code></pre>
 </div>
@@ -3169,7 +3414,189 @@ dogs = cats</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contact">11. Contact</h2>
+<h2 id="_http_requests">11. HTTP Requests</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_xmlhttprequest">11.1. XMLHttpRequest</h3>
+<div class="listingblock">
+<div class="title">XMLHttpRequest.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> req = <span class="keyword">new</span> XMLHttpRequest();
+<span class="keyword">var</span> isAsync = <span class="predefined-constant">true</span>; <span class="comment">// default</span>
+
+req.open(<span class="string"><span class="delimiter">'</span><span class="content">GET</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">/path/to/resource</span><span class="delimiter">'</span></span>, isAsync);
+req.setRequestHeader(<span class="string"><span class="delimiter">'</span><span class="content">Accept</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">application/json</span><span class="delimiter">'</span></span>);
+
+req.<span class="function">onreadystatechange</span> = <span class="keyword">function</span>() {
+    <span class="keyword">if</span> (req.readyState == <span class="integer">4</span>) { <span class="comment">// 4 == DONE, 3 == LOADING, 2 == HEADER_RECEIVED, 1 == OPENED, 0 == UNSENT</span>
+        <span class="keyword">if</span> (req.status == <span class="integer">200</span>) {
+            <span class="keyword">var</span> data = JSON.parse(req.responseText);
+            console.log(data);
+            <span class="comment">// ...</span>
+        } <span class="keyword">else</span> {
+            <span class="comment">// do something other...</span>
+            console.error(req.status, req.responseText);
+        }
+    }
+};
+
+req.send();</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="https://developer.mozilla.org/de/docs/Web/API/XMLHttpRequest" class="bare">https://developer.mozilla.org/de/docs/Web/API/XMLHttpRequest</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_apis_and_libraries">11.2. APIs and Libraries</h3>
+<div class="sect3">
+<h4 id="_jquery_ajax">11.2.1. jQuery.ajax()</h4>
+<div class="listingblock">
+<div class="title">jQuery.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">jQuery.ajax({
+    <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">/path/to/resource</span><span class="delimiter">'</span></span>,
+    <span class="key">data</span>: {},
+    <span class="key">dataType</span>: <span class="string"><span class="delimiter">'</span><span class="content">json</span><span class="delimiter">'</span></span>,
+    <span class="function">success</span>: <span class="keyword">function</span> (data) {
+        console.log(data);
+    },
+    <span class="function">error</span>: <span class="keyword">function</span> (xhr, status, err) {
+        console.error(status, err.toString());
+    }
+});</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">jQuery-get.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">jQuery.get({
+    <span class="string"><span class="delimiter">'</span><span class="content">/path/to/resource</span><span class="delimiter">'</span></span>,
+    {},
+    <span class="keyword">function</span>(data) {
+        console.log(data);
+    },
+    <span class="string"><span class="delimiter">'</span><span class="content">json</span><span class="delimiter">'</span></span>
+})</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="http://api.jquery.com/jquery.ajax/" class="bare">http://api.jquery.com/jquery.ajax/</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fetch_api">11.2.2. fetch() API</h4>
+<div class="listingblock">
+<div class="title">fetch.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">fetch(<span class="string"><span class="delimiter">'</span><span class="content">/path/to/resource</span><span class="delimiter">'</span></span>, {
+        <span class="key">method</span>: <span class="string"><span class="delimiter">'</span><span class="content">GET</span><span class="delimiter">'</span></span>,
+        <span class="key">headers</span>: <span class="keyword">new</span> Headers()
+    })
+    .then(response =&gt; {
+        <span class="keyword">return</span> response.json(); <span class="comment">// blob(), text(), formData(), arrayBuffer()</span>
+    })
+    .then(json =&gt; {
+        console.log(json);
+    })
+    .<span class="keyword">catch</span>(error =&gt; {
+        console.error(error);
+    })</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">fetch-short.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">fetch(<span class="string"><span class="delimiter">'</span><span class="content">/path/to/resource</span><span class="delimiter">'</span></span>).then(response =&gt; {
+    <span class="keyword">return</span> response.json().then(json =&gt; console.log(json));
+})</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Only modern browsers, still marked as <em>experimental</em>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" class="bare">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_axios_library">11.2.3. Axios library</h4>
+<div class="listingblock">
+<div class="title">axios.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">axios.get(<span class="string"><span class="delimiter">'</span><span class="content">/path/to/resource</span><span class="delimiter">'</span></span>, {})
+    .then(response =&gt; {
+        console.log(response);
+    })
+    .<span class="keyword">catch</span>(error =&gt; {
+        console.error(error);
+    })</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Comprehensive configuration possible</p>
+</li>
+<li>
+<p>Interceptors</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="https://www.npmjs.com/package/axios" class="bare">https://www.npmjs.com/package/axios</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contact">12. Contact</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Niko Köbler IT-Beratung</p>
@@ -3188,7 +3615,7 @@ dogs = cats</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-11 14:18:19 UTC
+Last updated 2016-09-17 14:40:15 UTC
 </div>
 </div>
 </body>
